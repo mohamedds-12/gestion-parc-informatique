@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome')->name('welcome');
+
+Route::view('/login', 'login');
+
+Route::post('/login', [AgentController::class, 'login'])->name('login');
