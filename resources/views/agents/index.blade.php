@@ -30,16 +30,14 @@
                     <td>{{ $agent->email }}</td>
                     <td>
                         <div class="d-flex justify-content-between">
-                            <a href="{{ route('agents.edit', $agent) }}" class="btn btn-info btn-sm">
+                            <a href="{{ route('agents.edit', ['matricule' => $agent->matricule]) }}" class="btn btn-info btn-sm">
                                 <i class="fa-solid fa-pen-to-square"></i> Modifier
                             </a>
-                            <form action="{{ route('agents.destroy', $agent) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">
-                                    <i class="fa-solid fa-trash-can"></i> Supprimer
-                                </button>
-                            </form>
+                            <a href="{{ route('agents.destroy', ['matricule' => $agent->matricule]) }}"
+                                class="btn btn-danger btn-sm" data-confirm-delete="true">
+                                <i class="fa-solid fa-trash-can"></i> Supprimer
+                            </a>
+
                         </div>
 
                     </td>

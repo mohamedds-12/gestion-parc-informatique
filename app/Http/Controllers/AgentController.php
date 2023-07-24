@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Validation\Rule;
 
 class AgentController extends Controller
 {
@@ -33,7 +34,7 @@ class AgentController extends Controller
         }
 
 
-        return redirect()->route('welcome');
+        return redirect()->route('dashboard');
     }
 
 
@@ -52,7 +53,7 @@ class AgentController extends Controller
      */
     public function index()
     {
-
+        confirmDelete('Êtes-vous sûrs ?', 'Êtes-vous sûr de vouloir supprimer cet agent ?');
         return view('agents.index', [
             'agents' => Agent::all()
         ]);
@@ -71,7 +72,6 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'matricule' => 'required|max_digits:4|integer|unique:agent,matricule',
             'nom' => 'required|max:20',
@@ -102,24 +102,44 @@ class AgentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Agent $agent)
+    public function edit($matricule)
     {
-        //
+        $agent = Agent::find($matricule);
+        return view('agents.edit', ['agent' => $agent]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Agent $agent)
+    public function update(Request $request, $matricule)
     {
-        //
+        $agent = Agent::find($matricule);
+
+        $request->validate([
+            'nom' => 'required|max:20',
+            'prenom' => 'required|max:20',
+            'email' => ["required", 'email', Rule::unique('agent')->ignore($agent->matricule, 'matricule')],
+            'password' => 'confirmed'
+        ]);
+
+        $agent->update([
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'email' => $request->email,
+            'password' => $request->has('password')
+                        ? Hash::make($request->password)
+                        : $agent->password,
+        ]);
+
+        return redirect()->route('agents.index')->with('success', 'Agent mis à jour avec succès');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Agent $agent)
+    public function destroy($matricule)
     {
-        //
+        $agent = Agent::find($matricule)->delete();
+        return redirect()->route('agents.index')->with('success', 'Agent supprimé avec succès');
     }
 }
