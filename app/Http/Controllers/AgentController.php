@@ -40,9 +40,22 @@ class AgentController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function logout()
+    {
+        Auth::logout();
+        return view('welcome');
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        //
+
+        return view('agents.index', [
+            'agents' => Agent::all()
+        ]);
     }
 
     /**

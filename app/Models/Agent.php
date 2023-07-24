@@ -13,6 +13,6 @@ class Agent extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = "agent";
-    protected $primaryKey = "Matricule_agent";
+    protected $primaryKey = "matricule_agent";
 
 }
