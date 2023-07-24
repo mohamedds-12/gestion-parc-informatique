@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BonTransfere extends Model
+class BonTransfere extends BaseModel
 {
     use HasFactory;
 
     protected $table = 'bon_transfére';
-    protected $primaryKey = "Num_BT";
+    protected $primaryKey = "num_btc";
+    protected $guarded = [];
+
 }

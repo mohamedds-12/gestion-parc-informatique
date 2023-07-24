@@ -63,7 +63,7 @@ class AgentController extends Controller
      */
     public function create()
     {
-        //
+        return view('agents.create');
     }
 
     /**
@@ -71,7 +71,24 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'matricule' => 'required|max_digits:4|integer|unique:agent,matricule',
+            'nom' => 'required|max:20',
+            'prenom' =>'required|max:20',
+            'email' =>'required|email|unique:agent,email',
+            'password' => 'required|confirmed'
+        ]);
+
+        Agent::create([
+            'matricule' => $request->matricule,
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('agents.index')->with('success', 'Agent creé avec succès');
     }
 
     /**

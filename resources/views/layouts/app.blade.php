@@ -29,7 +29,7 @@
 
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid px-4 pt-4">
+                <div class="container-fluid p-4">
                     @yield('content')
                 </div>
             </main>
@@ -43,6 +43,14 @@
     <script src="{{ asset('js/scripts.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/239ea234ba.js" crossorigin="anonymous"></script>
+    @include('sweetalert::alert')
+
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
+
     @yield('scripts')
 
 </body>

@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DechargeFournisseur extends Model
+class DechargeFournisseur extends BaseModel
 {
     use HasFactory;
 
     protected $table = 'décharge_fournisseur';
-    protected $primaryKey = "Code_décharge";
+    protected $primaryKey = "code_decharge";
+    protected $guarded = [];
+
 
 
     /**
@@ -20,6 +22,6 @@ class DechargeFournisseur extends Model
      */
     public function materiels()
     {
-        return $this->belongsToMany(Materiel::class, 'réparer', 'Num_matériel', 'Code_décharge');
+        return $this->belongsToMany(Materiel::class, 'réparer', 'num_materiel', 'Code_decharge');
     }
 }
