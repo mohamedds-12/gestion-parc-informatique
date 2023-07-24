@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\EmployeController;
+use App\Http\Controllers\StructureController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,11 +26,28 @@ Route::middleware('auth')->group(function() {
 
     Route::post('/logout', [AgentController::class, 'logout'])->name('logout');
 
+    // Agents
     Route::get('/agents', [AgentController::class, 'index'])->name('agents.index');
     Route::get('/agents/create', [AgentController::class, 'create'])->name('agents.create');
     Route::post('/agents', [AgentController::class, 'store'])->name('agents.store');
     Route::get('/agents/{matricule}/edit', [AgentController::class, 'edit'])->name('agents.edit');
     Route::patch('/agents/{matricule}', [AgentController::class, 'update'])->name('agents.update');
     Route::delete('/agents/{matricule}/delete', [AgentController::class, 'destroy'])->name('agents.destroy');
+
+    // Emplyees
+    Route::get('/emplyees', [EmployeController::class, 'index'])->name('emplyees.index');
+    Route::get('/emplyees/create', [EmployeController::class, 'create'])->name('emplyees.create');
+    Route::post('/emplyees', [EmployeController::class, 'store'])->name('emplyees.store');
+    Route::get('/emplyees/{num_employe}/edit', [EmployeController::class, 'edit'])->name('emplyees.edit');
+    Route::patch('/emplyees/{num_employe}', [EmployeController::class, 'update'])->name('emplyees.update');
+    Route::delete('/emplyees/{num_employe}/delete', [EmployeController::class, 'destroy'])->name('emplyees.destroy');
+
+    // Structures
+    Route::get('/structures', [StructureController::class, 'index'])->name('structures.index');
+    Route::get('/structures/create', [StructureController::class, 'create'])->name('structures.create');
+    Route::post('/structures', [StructureController::class, 'store'])->name('structures.store');
+    Route::get('/structures/{num_structure}/edit', [StructureController::class, 'edit'])->name('structures.edit');
+    Route::patch('/structures/{num_structure}', [StructureController::class, 'update'])->name('structures.update');
+    Route::delete('/structures/{num_structure}/delete', [StructureController::class, 'destroy'])->name('structures.destroy');
 
 });

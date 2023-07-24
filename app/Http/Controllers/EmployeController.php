@@ -7,12 +7,16 @@ use Illuminate\Http\Request;
 
 class EmployeController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        confirmDelete('Êtes-vous sûrs ?', 'Êtes-vous sûr de vouloir supprimer cet employé ?');
+        return view('employees.index', [
+            'employees' => Employe::all()
+        ]);
     }
 
     /**
@@ -20,7 +24,7 @@ class EmployeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employees.create');
     }
 
     /**
@@ -28,13 +32,25 @@ class EmployeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required|max:20',
+            'prenom' =>'required|max:20',
+            'num_telephone' => 'required'
+        ]);
+
+        Employe::create([
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'num_telephone' => $request->num_telephone
+        ]);
+
+        return redirect()->route('employees.index')->with('success', 'Employe creé avec succès');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Employe $employe)
+    public function show(Employe $agent)
     {
         //
     }
@@ -42,24 +58,44 @@ class EmployeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Employe $employe)
+    public function edit($matricule)
     {
-        //
+        $agent = Employe::find($matricule);
+        return view('employees.edit', ['agent' => $agent]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Employe $employe)
+    public function update(Request $request, $matricule)
     {
-        //
+        $agent = Employe::find($matricule);
+
+        $request->validate([
+            'nom' => 'required|max:20',
+            'prenom' => 'required|max:20',
+            'email' => ["required", 'email', Rule::unique('agent')->ignore($agent->matricule, 'matricule')],
+            'password' => 'confirmed'
+        ]);
+
+        $agent->update([
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'email' => $request->email,
+            'password' => $request->has('password')
+                        ? Hash::make($request->password)
+                        : $agent->password,
+        ]);
+
+        return redirect()->route('employees.index')->with('success', 'Employe mis à jour avec succès');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Employe $employe)
+    public function destroy($matricule)
     {
-        //
+        $agent = Employe::find($matricule)->delete();
+        return redirect()->route('employees.index')->with('success', 'Employe supprimé avec succès');
     }
 }
