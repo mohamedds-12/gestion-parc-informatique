@@ -33,6 +33,14 @@
             <label for="num_telephone" class="form-label">Numéro de téléphone </label>
             <input type="text" class="form-control" id="num_telephone" name="num_telephone" value="{{old('num_telephone')}}">
         </div>
+        <div class="mb-3">
+            <label for="structure" class="form-label">Structure</label>
+            <select name="num_structure" class="form-select">
+                @foreach ($structures as $structure)
+                    <option value="{{ $structure->num_structure}}">{{ $structure->designation}}</option>
+                @endforeach
+            <select>
+        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

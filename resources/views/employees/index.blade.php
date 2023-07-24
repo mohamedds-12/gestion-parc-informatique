@@ -1,39 +1,41 @@
 @extends('layouts.app')
 
 @section('title')
-    Agents
+    Employées
 @endsection
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="">Agents</h1>
+        <h1 class="">Employées</h1>
 
-        <a name="" id="" class="btn btn-primary" href="{{ route('agents.create') }}" role="button">
+        <a name="" id="" class="btn btn-primary" href="{{ route('employees.create') }}" role="button">
             <i class="fa-solid fa-circle-plus"></i> Ajouter
         </a>
     </div>
 
     <table id="dataTable" class="table table-responsive table-bordered">
         <thead class="table-dark">
-            <th>Matricule</th>
+            <th>N° Employé</th>
             <th>Nom</th>
             <th>Prénom</th>
-            <th>E-mail</th>
+            <th>Numéro de téléphone</th>
+            <th>Structure</th>
             <th class="text-center" width="20%">Actions</th>
         </thead>
         <tbody>
-            @foreach ($agents as $agent)
+            @foreach ($employees as $employe)
                 <tr>
-                    <td>{{ $agent->matricule }}</td>
-                    <td>{{ $agent->nom }}</td>
-                    <td>{{ $agent->prenom }}</td>
-                    <td>{{ $agent->email }}</td>
+                    <td>{{ $employe->num_employe }}</td>
+                    <td>{{ $employe->nom }}</td>
+                    <td>{{ $employe->prenom }}</td>
+                    <td>{{ $employe->num_telephone }}</td>
+                    <td>{{ $employe->structure->designation}}</td>
                     <td>
                         <div class="d-flex justify-content-between">
-                            <a href="{{ route('agents.edit', ['matricule' => $agent->matricule]) }}" class="btn btn-info btn-sm">
+                            <a href="{{ route('employees.edit', $employe->num_employe) }}" class="btn btn-info btn-sm">
                                 <i class="fa-solid fa-pen-to-square"></i> Modifier
                             </a>
-                            <a href="{{ route('agents.destroy', ['matricule' => $agent->matricule]) }}"
+                            <a href="{{ route('employees.destroy', $employe->num_employe) }}"
                                 class="btn btn-danger btn-sm" data-confirm-delete="true">
                                 <i class="fa-solid fa-trash-can"></i> Supprimer
                             </a>

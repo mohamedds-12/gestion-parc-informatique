@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-    Modifier un agent
+    Modifier un employé
 @endsection
 
 
 @section('content')
-    <h1 class="mb-3">Modifier un agent</h1>
+    <h1 class="mb-3">Modifier un employé</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -19,33 +19,32 @@
     @endif
 
 
-    <form method="POST" action="{{route('agents.update', ['matricule' => $agent->matricule])}}">
+    <form method="POST" action="{{route('employees.update', ['num_employe' => $employe->num_employe])}}">
         @csrf
         @method('patch')
         <div class="mb-3">
-            <label for="matricule" class="form-label">Matricule</label>
-            <input disabled readonly type="text" class="form-control" id="matricule" name="matricule" value="{{$agent->matricule}}">
+            <label for="num_employe" class="form-label">N° Employé</label>
+            <input disabled readonly type="text" class="form-control" id="num_employe" name="num_employe" value="{{$employe->num_employe}}">
         </div>
         <div class="mb-3">
             <label for="nom" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="nom" name="nom" value="{{$agent->nom}}">
+            <input type="text" class="form-control" id="nom" name="nom" value="{{$employe->nom}}">
         </div>
         <div class="mb-3">
             <label for="prenom" class="form-label">Prénom</label>
-            <input type="text" class="form-control" id="prenom" name="prenom" value="{{$agent->prenom}}">
+            <input type="text" class="form-control" id="prenom" name="prenom" value="{{$employe->prenom}}">
         </div>
         <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" value="{{$agent->email}}">
+            <label for="num_telephone" class="form-label">Numéro de téléphone </label>
+            <input type="text" class="form-control" id="num_telephone" name="num_telephone" value="{{$employe->num_telephone}}">
         </div>
         <div class="mb-3">
-            <label for="password" class="form-label">Mot de passe</label>
-            <input type="password" class="form-control" id="password" name="password" value="">
-            <div class="form-text">Optional</div>
-        </div>
-        <div class="mb-3">
-            <label for="password_confirm" class="form-label">Confirmer mot de passe</label>
-            <input type="password" class="form-control" id="password_confirm" name="password_confirmation" value="">
+            <label for="structure" class="form-label">Structure</label>
+            <select name="num_structure" class="form-select">
+                @foreach ($structures as $structure)
+                    <option value="{{ $structure->num_structure}}" @selected($employe->num_structure == $structure->num_structure)>{{ $structure->designation}}</option>
+                @endforeach
+            <select>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

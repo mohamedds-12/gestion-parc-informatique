@@ -34,13 +34,13 @@ Route::middleware('auth')->group(function() {
     Route::patch('/agents/{matricule}', [AgentController::class, 'update'])->name('agents.update');
     Route::delete('/agents/{matricule}/delete', [AgentController::class, 'destroy'])->name('agents.destroy');
 
-    // Emplyees
-    Route::get('/emplyees', [EmployeController::class, 'index'])->name('emplyees.index');
-    Route::get('/emplyees/create', [EmployeController::class, 'create'])->name('emplyees.create');
-    Route::post('/emplyees', [EmployeController::class, 'store'])->name('emplyees.store');
-    Route::get('/emplyees/{num_employe}/edit', [EmployeController::class, 'edit'])->name('emplyees.edit');
-    Route::patch('/emplyees/{num_employe}', [EmployeController::class, 'update'])->name('emplyees.update');
-    Route::delete('/emplyees/{num_employe}/delete', [EmployeController::class, 'destroy'])->name('emplyees.destroy');
+    // Employees
+    Route::get('/employees', [EmployeController::class, 'index'])->name('employees.index');
+    Route::get('/employees/create', [EmployeController::class, 'create'])->name('employees.create');
+    Route::post('/employees', [EmployeController::class, 'store'])->name('employees.store');
+    Route::get('/employees/{num_employe}/edit', [EmployeController::class, 'edit'])->name('employees.edit');
+    Route::patch('/employees/{num_employe}', [EmployeController::class, 'update'])->name('employees.update');
+    Route::delete('/employees/{num_employe}/delete', [EmployeController::class, 'destroy'])->name('employees.destroy');
 
     // Structures
     Route::get('/structures', [StructureController::class, 'index'])->name('structures.index');

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-    Ajouter une structure
+    Creér une structure
 @endsection
 
 
 @section('content')
-    <h1 class="mb-3">Ajouter une structure</h1>
+    <h1 class="mb-3">Creér une structure</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">
