@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\EmployeController;
+use App\Http\Controllers\MaterielController;
 use App\Http\Controllers\StructureController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,5 +50,13 @@ Route::middleware('auth')->group(function() {
     Route::get('/structures/{num_structure}/edit', [StructureController::class, 'edit'])->name('structures.edit');
     Route::patch('/structures/{num_structure}', [StructureController::class, 'update'])->name('structures.update');
     Route::delete('/structures/{num_structure}/delete', [StructureController::class, 'destroy'])->name('structures.destroy');
+
+    // Materiels
+    Route::get('/materiels', [MaterielController::class, 'index'])->name('materiels.index');
+    Route::get('/materiels/create', [MaterielController::class, 'create'])->name('materiels.create');
+    Route::post('/materiels', [MaterielController::class, 'store'])->name('materiels.store');
+    Route::get('/materiels/{num_materiel}/edit', [MaterielController::class, 'edit'])->name('materiels.edit');
+    Route::patch('/materiels/{num_materiel}', [MaterielController::class, 'update'])->name('materiels.update');
+    Route::delete('/materiels/{num_materiel}/delete', [MaterielController::class, 'destroy'])->name('materiels.destroy');
 
 });

@@ -13,7 +13,7 @@
         </a>
     </div>
 
-    <table id="dataTable" class="table table-responsive table-bordered">
+    <table id="dataTable" class="table table-responsive table-bordered table-hover">
         <thead class="table-dark">
             <th>Matricule</th>
             <th>Nom</th>

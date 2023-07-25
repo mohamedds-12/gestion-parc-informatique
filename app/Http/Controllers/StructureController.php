@@ -42,7 +42,7 @@ class StructureController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'designation' => 'required|max:12',
+            'designation' => 'required|max:40',
             'designation_site' =>'required|max:40',
             'wilaya' => 'required'
         ]);
@@ -84,7 +84,7 @@ class StructureController extends Controller
         $structure = Structure::find($num_structure);
 
         $request->validate([
-            'designation' => 'required|max:12',
+            'designation' => 'required|max:40',
             'designation_site' =>'required|max:40',
             'wilaya' => 'required'
         ]);

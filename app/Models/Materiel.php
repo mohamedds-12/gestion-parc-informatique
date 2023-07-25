@@ -10,7 +10,7 @@ class Materiel extends BaseModel
     use HasFactory;
 
     protected $table = 'matériel';
-    protected $primaryKey = "num_materiel";
+    protected $primaryKey = "matricule";
     protected $guarded = [];
 
 }

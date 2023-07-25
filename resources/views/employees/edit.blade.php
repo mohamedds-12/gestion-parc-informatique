@@ -22,10 +22,12 @@
     <form method="POST" action="{{route('employees.update', ['num_employe' => $employe->num_employe])}}">
         @csrf
         @method('patch')
+
         <div class="mb-3">
-            <label for="num_employe" class="form-label">N° Employé</label>
-            <input disabled readonly type="text" class="form-control" id="num_employe" name="num_employe" value="{{$employe->num_employe}}">
+            <label for="matricule" class="form-label">Matricule</label>
+            <input disabled readonly type="text" class="form-control" id="matricule" value="{{$employe->matricule}}">
         </div>
+
         <div class="mb-3">
             <label for="nom" class="form-label">Nom</label>
             <input type="text" class="form-control" id="nom" name="nom" value="{{$employe->nom}}">

@@ -37,6 +37,7 @@ class EmployeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'matricule' => 'required',
             'nom' => 'required|max:20',
             'prenom' =>'required|max:20',
             'num_telephone' => 'required',
@@ -44,7 +45,7 @@ class EmployeController extends Controller
         ]);
 
         Employe::create([
-            'num_employe' => Tools::generateModelNumber(Employe::class),
+            'matricule' => $request->matricule,
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'num_telephone' => $request->num_telephone,
@@ -65,11 +66,10 @@ class EmployeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($num_employe)
+    public function edit($matricule)
     {
-        $employe = Employe::find($num_employe);
         return view('employees.edit', [
-            'employe' => $employe,
+            'employe' => Employe::find($matricule),
             'structures' => Structure::all()
         ]);
     }
@@ -77,7 +77,7 @@ class EmployeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $num_employe)
+    public function update(Request $request, $matricule)
     {
 
         $request->validate([
@@ -87,7 +87,7 @@ class EmployeController extends Controller
             'num_structure' => 'required'
         ]);
 
-        Employe::find($num_employe)->update([
+        Employe::find($matricule)->update([
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'num_telephone' => $request->num_telephone,
@@ -100,9 +100,9 @@ class EmployeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($num_employe)
+    public function destroy($matricule)
     {
-        $agent = Employe::find($num_employe)->delete();
+        Employe::find($matricule)->delete();
         return redirect()->route('employees.index')->with('success', 'Employe supprimé avec succès');
     }
 }
