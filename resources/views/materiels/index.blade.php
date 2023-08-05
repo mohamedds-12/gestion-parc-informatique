@@ -17,11 +17,11 @@
         <thead class="table-dark">
             <th>Matricule</th>
             <th>Désignation</th>
-            <th>N° Série</th>
-            <th>Code IMMO</th>
-            <th>Etat</th>
             <th>Modéle</th>
             <th>Référence</th>
+            <th>Etat</th>
+            <th>N° Série</th>
+            <th>Code IMMO</th>
             <th class="text-center" width="20%">Actions</th>
         </thead>
         <tbody>

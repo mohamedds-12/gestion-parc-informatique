@@ -13,4 +13,23 @@ class Affectation extends BaseModel
     protected $primaryKey = "code_affectation";
     protected $guarded = [];
 
+    /**
+     * Get the employe that owns the Affectation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function employe()
+    {
+        return $this->belongsTo(Employe::class, 'matricule_employe');
+    }
+
+    /**
+     * Get the materiel that owns the Affectation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function materiel()
+    {
+        return $this->belongsTo(Materiel::class, 'matricule_materiel');
+    }
 }

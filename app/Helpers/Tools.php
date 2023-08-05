@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\Affectation;
 
 class Tools
 {
@@ -14,5 +15,11 @@ class Tools
         } while ($modelClassPath::find($modelNumber) != null);
 
         return $modelNumber;
+    }
+
+    public static function generateAffectationCode($materiel): string
+    {
+        $codeAffectation = substr($materiel->matricule, 0, 3) . '-' . now()->year;
+        return $codeAffectation;
     }
 }

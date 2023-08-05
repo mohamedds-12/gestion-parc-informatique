@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class MaterielController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -78,12 +78,13 @@ class MaterielController extends Controller
      */
     public function update(Request $request, $matricule)
     {
+        $materiel = Materiel::find($matricule);
 
         $request->validate([
             'designation' => 'required|max:40',
             'modele' =>'required|max:15',
             'num_serie' => 'required|max:25',
-            'code_immo' => 'required|max:15',
+            'code_immo' => "required|max:15|unique:materiel,code_immo,except,code_immo,$materiel->code_immo",
             'reference' => 'required|max:10',
         ]);
 

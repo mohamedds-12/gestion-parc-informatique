@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Tools;
 use App\Models\Affectation;
+use App\Models\Employe;
+use App\Models\Materiel;
 use Illuminate\Http\Request;
 
 class AffectationController extends Controller
@@ -12,7 +15,10 @@ class AffectationController extends Controller
      */
     public function index()
     {
-        //
+        confirmDelete('Êtes-vous sûrs ?', 'Êtes-vous sûr de vouloir supprimer cet affectation ?');
+        return view('affectations.index', [
+            'affectations' => Affectation::all()
+        ]);
     }
 
     /**
@@ -20,7 +26,10 @@ class AffectationController extends Controller
      */
     public function create()
     {
-        //
+        return view('affectations.create', [
+            'employees' => Employe::all(),
+            'materiels' => Materiel::all()
+        ]);
     }
 
     /**
@@ -28,38 +37,72 @@ class AffectationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'employe' => 'required|exists:employé,matricule',
+            'materiel' => 'required|exists:matériel,matricule',
+        ]);
+
+        if (Affectation::where('matricule_employe', $request->employe)->where('matricule_materiel', $request->materiel)->exists()) {
+            return redirect()->back()->withErrors('Ce matériel est déjà affecté au cet employé');
+        }
+
+        Affectation::create([
+            'code_affectation' => Tools::generateAffectationCode(Materiel::find($request->materiel)),
+            'matricule_employe' => $request->employe,
+            'matricule_materiel' => $request->materiel,
+            'date_affectation' => now()
+        ]);
+
+        return redirect()->route('affectations.index')->with('success', 'Affectation ajouté avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Affectation $affectation)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Affectation $affectation)
+    public function edit($code_affectation)
     {
-        //
+        return view('affectations.edit', [
+            'affectation' => Affectation::find($code_affectation),
+            'employees' => Employe::all(),
+            'materiels' => Materiel::all()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Affectation $affectation)
+    public function update(Request $request, $code_affectation)
     {
-        //
+        $affectation = Affectation::find($code_affectation);
+
+        if (Affectation::where('matricule_employe', $request->employe)
+            ->where('matricule_materiel', $request->materiel)
+            ->whereNot('code_affectation', $affectation->code_affectation)
+            ->exists()
+        ) {
+            return redirect()->back()->withErrors('Ce matériel est déjà affecté au cet employé');
+        }
+
+        $request->validate([
+            'employe' => 'required|exists:employé,matricule',
+            'materiel' => 'required|exists:matériel,matricule',
+        ]);
+
+        $affectation->update([
+            'matricule_employe' => $request->employe,
+            'matricule_materiel' => $request->materiel,
+        ]);
+
+        return redirect()->route('affectations.index')->with('success', 'Affectation mis à jour avec succès');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Affectation $affectation)
+    public function destroy($code_affectation)
     {
-        //
+        Affectation::find($code_affectation)->delete();
+        return redirect()->route('affectations.index')->with('success', 'Affectation supprimé avec succès');
     }
 }

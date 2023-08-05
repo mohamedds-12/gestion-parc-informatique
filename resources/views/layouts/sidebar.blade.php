@@ -24,6 +24,14 @@
                     <div class="sb-nav-link-icon"></div>
                     Matériels
                 </a>
+                <a class="nav-link" href="{{ route('fournisseurs.index') }}">
+                    <div class="sb-nav-link-icon"></div>
+                    Fournisseurs
+                </a>
+                <a class="nav-link" href="{{ route('affectations.index') }}">
+                    <div class="sb-nav-link-icon"></div>
+                    Affectations
+                </a>
 
                 {{-- <div class="sb-sidenav-menu-heading">Interface</div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">

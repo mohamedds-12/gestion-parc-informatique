@@ -10,7 +10,7 @@ class Employe extends BaseModel
     use HasFactory;
 
     protected $table = 'employé';
-    protected $primaryKey = "num_employe";
+    protected $primaryKey = "matricule";
     protected $guarded = [];
 
 

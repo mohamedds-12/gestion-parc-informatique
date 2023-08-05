@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AffectationController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\EmployeController;
+use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\MaterielController;
 use App\Http\Controllers\StructureController;
 use Illuminate\Support\Facades\Route;
@@ -58,5 +60,21 @@ Route::middleware('auth')->group(function() {
     Route::get('/materiels/{num_materiel}/edit', [MaterielController::class, 'edit'])->name('materiels.edit');
     Route::patch('/materiels/{num_materiel}', [MaterielController::class, 'update'])->name('materiels.update');
     Route::delete('/materiels/{num_materiel}/delete', [MaterielController::class, 'destroy'])->name('materiels.destroy');
+
+    // Fournisseurs
+    Route::get('/fournisseurs', [FournisseurController::class, 'index'])->name('fournisseurs.index');
+    Route::get('/fournisseurs/create', [FournisseurController::class, 'create'])->name('fournisseurs.create');
+    Route::post('/fournisseurs', [FournisseurController::class, 'store'])->name('fournisseurs.store');
+    Route::get('/fournisseurs/{num_fournisseur}/edit', [FournisseurController::class, 'edit'])->name('fournisseurs.edit');
+    Route::patch('/fournisseurs/{num_fournisseur}', [FournisseurController::class, 'update'])->name('fournisseurs.update');
+    Route::delete('/fournisseurs/{num_fournisseur}/delete', [FournisseurController::class, 'destroy'])->name('fournisseurs.destroy');
+
+    // Affectations
+    Route::get('/affectations', [AffectationController::class, 'index'])->name('affectations.index');
+    Route::get('/affectations/create', [AffectationController::class, 'create'])->name('affectations.create');
+    Route::post('/affectations', [AffectationController::class, 'store'])->name('affectations.store');
+    Route::get('/affectations/{num_affectation}/edit', [AffectationController::class, 'edit'])->name('affectations.edit');
+    Route::patch('/affectations/{num_affectation}', [AffectationController::class, 'update'])->name('affectations.update');
+    Route::delete('/affectations/{num_affectation}/delete', [AffectationController::class, 'destroy'])->name('affectations.destroy');
 
 });
