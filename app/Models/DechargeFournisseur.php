@@ -22,6 +22,17 @@ class DechargeFournisseur extends BaseModel
      */
     public function materiels()
     {
-        return $this->belongsToMany(Materiel::class, 'réparer', 'num_materiel', 'Code_decharge');
+        return $this->belongsToMany(Materiel::class, 'réparer', 'code_decharge', 'matricule_materiel');
+    }
+
+
+    /**
+     * Get the fournisseur that owns the DechargeFournisseur
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function fournisseur()
+    {
+        return $this->belongsTo(Fournisseur::class, 'num_fournisseur');
     }
 }

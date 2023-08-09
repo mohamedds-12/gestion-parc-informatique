@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AffectationController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\DechargeFournisseurController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\MaterielController;
@@ -41,9 +42,9 @@ Route::middleware('auth')->group(function() {
     Route::get('/employees', [EmployeController::class, 'index'])->name('employees.index');
     Route::get('/employees/create', [EmployeController::class, 'create'])->name('employees.create');
     Route::post('/employees', [EmployeController::class, 'store'])->name('employees.store');
-    Route::get('/employees/{num_employe}/edit', [EmployeController::class, 'edit'])->name('employees.edit');
-    Route::patch('/employees/{num_employe}', [EmployeController::class, 'update'])->name('employees.update');
-    Route::delete('/employees/{num_employe}/delete', [EmployeController::class, 'destroy'])->name('employees.destroy');
+    Route::get('/employees/{matricule}/edit', [EmployeController::class, 'edit'])->name('employees.edit');
+    Route::patch('/employees/{matricule}', [EmployeController::class, 'update'])->name('employees.update');
+    Route::delete('/employees/{matricule}/delete', [EmployeController::class, 'destroy'])->name('employees.destroy');
 
     // Structures
     Route::get('/structures', [StructureController::class, 'index'])->name('structures.index');
@@ -57,9 +58,9 @@ Route::middleware('auth')->group(function() {
     Route::get('/materiels', [MaterielController::class, 'index'])->name('materiels.index');
     Route::get('/materiels/create', [MaterielController::class, 'create'])->name('materiels.create');
     Route::post('/materiels', [MaterielController::class, 'store'])->name('materiels.store');
-    Route::get('/materiels/{num_materiel}/edit', [MaterielController::class, 'edit'])->name('materiels.edit');
-    Route::patch('/materiels/{num_materiel}', [MaterielController::class, 'update'])->name('materiels.update');
-    Route::delete('/materiels/{num_materiel}/delete', [MaterielController::class, 'destroy'])->name('materiels.destroy');
+    Route::get('/materiels/{matricule}/edit', [MaterielController::class, 'edit'])->name('materiels.edit');
+    Route::patch('/materiels/{matricule}', [MaterielController::class, 'update'])->name('materiels.update');
+    Route::delete('/materiels/{matricule}/delete', [MaterielController::class, 'destroy'])->name('materiels.destroy');
 
     // Fournisseurs
     Route::get('/fournisseurs', [FournisseurController::class, 'index'])->name('fournisseurs.index');
@@ -73,8 +74,16 @@ Route::middleware('auth')->group(function() {
     Route::get('/affectations', [AffectationController::class, 'index'])->name('affectations.index');
     Route::get('/affectations/create', [AffectationController::class, 'create'])->name('affectations.create');
     Route::post('/affectations', [AffectationController::class, 'store'])->name('affectations.store');
-    Route::get('/affectations/{num_affectation}/edit', [AffectationController::class, 'edit'])->name('affectations.edit');
-    Route::patch('/affectations/{num_affectation}', [AffectationController::class, 'update'])->name('affectations.update');
-    Route::delete('/affectations/{num_affectation}/delete', [AffectationController::class, 'destroy'])->name('affectations.destroy');
+    Route::get('/affectations/{code_affectation}/edit', [AffectationController::class, 'edit'])->name('affectations.edit');
+    Route::patch('/affectations/{code_affectation}', [AffectationController::class, 'update'])->name('affectations.update');
+    Route::delete('/affectations/{code_affectation}/delete', [AffectationController::class, 'destroy'])->name('affectations.destroy');
+
+    // Affectations
+    Route::get('/reparations', [DechargeFournisseurController::class, 'index'])->name('decharges_fournisseur.index');
+    Route::get('/reparations/create', [DechargeFournisseurController::class, 'create'])->name('decharges_fournisseur.create');
+    Route::post('/reparations', [DechargeFournisseurController::class, 'store'])->name('decharges_fournisseur.store');
+    Route::get('/reparations/{code_decharge}/edit', [DechargeFournisseurController::class, 'edit'])->name('decharges_fournisseur.edit');
+    Route::patch('/reparations/{code_decharge}', [DechargeFournisseurController::class, 'update'])->name('decharges_fournisseur.update');
+    Route::delete('/reparations/{code_decharge}/delete', [DechargeFournisseurController::class, 'destroy'])->name('decharges_fournisseur.destroy');
 
 });

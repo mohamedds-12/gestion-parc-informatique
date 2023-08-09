@@ -13,4 +13,14 @@ class Materiel extends BaseModel
     protected $primaryKey = "matricule";
     protected $guarded = [];
 
+
+    /**
+     * The reparations that belong to the Materiel
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function reparations()
+    {
+        return $this->belongsToMany(DechargeFournisseur::class, 'réparer', 'matricule_materiel', 'code_decharge');
+    }
 }

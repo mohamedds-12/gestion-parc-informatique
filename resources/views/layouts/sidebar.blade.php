@@ -32,6 +32,10 @@
                     <div class="sb-nav-link-icon"></div>
                     Affectations
                 </a>
+                <a class="nav-link" href="{{ route('decharges_fournisseur.index') }}">
+                    <div class="sb-nav-link-icon"></div>
+                    Réparations
+                </a>
 
                 {{-- <div class="sb-sidenav-menu-heading">Interface</div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">

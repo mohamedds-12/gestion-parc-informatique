@@ -23,6 +23,11 @@
         @method('patch')
 
         <div class="mb-3">
+            <label for="code_affectation" class="form-label">Code d'affectation</label>
+            <input disabled readonly type="text" class="form-control" id="code_affectation" name="" value="{{$agent->matricule}}">
+        </div>
+
+        <div class="mb-3">
             <label for="employe" class="form-label">Employé</label>
             <select id="employe" name="employe" class="form-select" required>
                 <option value="" disabled> Choisir un employé</option>

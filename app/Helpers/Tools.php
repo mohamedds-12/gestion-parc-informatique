@@ -19,7 +19,19 @@ class Tools
 
     public static function generateAffectationCode($materiel): string
     {
-        $codeAffectation = substr($materiel->matricule, 0, 3) . '-' . now()->year;
+        $codeAffectation = 'AF' . '-' . substr($materiel->matricule, 0, 3) . '-' . now()->year;
+        return $codeAffectation;
+    }
+
+    public static function generateReparationCode($materiel): string
+    {
+        $codeAffectation = 'RP' . '-' . substr($materiel->matricule, 0, 3) . '-' . now()->year;
+        return $codeAffectation;
+    }
+
+    public static function generateReformationCode($materiel): string
+    {
+        $codeAffectation = 'RF' . '-' . substr($materiel->matricule, 0, 3) . '-' . now()->year;
         return $codeAffectation;
     }
 }

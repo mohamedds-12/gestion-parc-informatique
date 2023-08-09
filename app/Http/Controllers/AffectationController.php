@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\MaterielStatus;
 use App\Helpers\Tools;
 use App\Models\Affectation;
 use App\Models\Employe;
@@ -28,7 +29,7 @@ class AffectationController extends Controller
     {
         return view('affectations.create', [
             'employees' => Employe::all(),
-            'materiels' => Materiel::all()
+            'materiels' => Materiel::where('etat', MaterielStatus::Non_Affecte)->get()
         ]);
     }
 
@@ -51,6 +52,11 @@ class AffectationController extends Controller
             'matricule_employe' => $request->employe,
             'matricule_materiel' => $request->materiel,
             'date_affectation' => now()
+        ]);
+
+        // Update materiel status
+        Materiel::find($request->materiel)->update([
+            'etat' => MaterielStatus::Affecte
         ]);
 
         return redirect()->route('affectations.index')->with('success', 'Affectation ajouté avec succès');
@@ -102,7 +108,15 @@ class AffectationController extends Controller
      */
     public function destroy($code_affectation)
     {
-        Affectation::find($code_affectation)->delete();
+        $affectation = Affectation::find($code_affectation);
+
+        // Update materiel status
+        $affectation->materiel->update([
+            'etat' => MaterielStatus::Non_Affecte
+        ]);
+
+        $affectation->delete();
+
         return redirect()->route('affectations.index')->with('success', 'Affectation supprimé avec succès');
     }
 }

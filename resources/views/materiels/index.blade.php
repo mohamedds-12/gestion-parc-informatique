@@ -42,7 +42,7 @@
                                 @break
 
                                 @case(App\Enums\MaterielStatus::En_Reparation->value)
-                                <span class="badge bg-warning">{{ $materiel->etat }}</span>
+                                <span class="badge bg-warning text-dark">{{ $materiel->etat }}</span>
                                 @break
 
                                 @case(App\Enums\MaterielStatus::En_Reformation->value)
