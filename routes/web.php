@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome')->name('welcome');
+Route::view('/about-us', 'about_us')->name('aboutUs');
 
 Route::view('/login', 'login');
 Route::post('/login', [AgentController::class, 'login'])->name('login');
