@@ -24,7 +24,7 @@
 
         <div class="mb-3">
             <label for="code_affectation" class="form-label">Code d'affectation</label>
-            <input disabled readonly type="text" class="form-control" id="code_affectation" name="" value="{{$agent->matricule}}">
+            <input disabled readonly type="text" class="form-control" id="code_affectation" name="" value="{{$affectation->code_affectation}}">
         </div>
 
         <div class="mb-3">

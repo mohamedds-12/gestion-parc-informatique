@@ -3,6 +3,7 @@
 use App\Http\Controllers\AffectationController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\DechargeFournisseurController;
+use App\Http\Controllers\DechargeStructureController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\MaterielController;
@@ -79,12 +80,20 @@ Route::middleware('auth')->group(function() {
     Route::patch('/affectations/{code_affectation}', [AffectationController::class, 'update'])->name('affectations.update');
     Route::delete('/affectations/{code_affectation}/delete', [AffectationController::class, 'destroy'])->name('affectations.destroy');
 
-    // Affectations
+    // Reparations (Decharges fournisseur)
     Route::get('/reparations', [DechargeFournisseurController::class, 'index'])->name('decharges_fournisseur.index');
     Route::get('/reparations/create', [DechargeFournisseurController::class, 'create'])->name('decharges_fournisseur.create');
     Route::post('/reparations', [DechargeFournisseurController::class, 'store'])->name('decharges_fournisseur.store');
     Route::get('/reparations/{code_decharge}/edit', [DechargeFournisseurController::class, 'edit'])->name('decharges_fournisseur.edit');
     Route::patch('/reparations/{code_decharge}', [DechargeFournisseurController::class, 'update'])->name('decharges_fournisseur.update');
     Route::delete('/reparations/{code_decharge}/delete', [DechargeFournisseurController::class, 'destroy'])->name('decharges_fournisseur.destroy');
+
+    // Reformations (Decharges structure)
+    Route::get('/reformations', [DechargeStructureController::class, 'index'])->name('decharges_structure.index');
+    Route::get('/reformations/create', [DechargeStructureController::class, 'create'])->name('decharges_structure.create');
+    Route::post('/reformations', [DechargeStructureController::class, 'store'])->name('decharges_structure.store');
+    Route::get('/reformations/{code_decharge}/edit', [DechargeStructureController::class, 'edit'])->name('decharges_structure.edit');
+    Route::patch('/reformations/{code_decharge}', [DechargeStructureController::class, 'update'])->name('decharges_structure.update');
+    Route::delete('/reformations/{code_decharge}/delete', [DechargeStructureController::class, 'destroy'])->name('decharges_structure.destroy');
 
 });

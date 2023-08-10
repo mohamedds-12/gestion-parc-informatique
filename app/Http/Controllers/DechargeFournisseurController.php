@@ -107,6 +107,13 @@ class DechargeFournisseurController extends Controller
             'num_fournisseur' => $request->fournisseur
         ]);
 
+        foreach ($decharge_fournisseur->materiels as $materiel) {
+            // reset old decharge materiels status
+            $materiel->update([
+                'etat' => MaterielStatus::Non_Affecte
+            ]);
+        }
+
         $decharge_fournisseur->materiels()->sync($request->materiels);
 
         foreach ($request->materiels as $materielId) {

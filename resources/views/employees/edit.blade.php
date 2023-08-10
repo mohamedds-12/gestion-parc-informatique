@@ -19,7 +19,7 @@
     @endif
 
 
-    <form method="POST" action="{{route('employees.update', ['num_employe' => $employe->num_employe])}}">
+    <form method="POST" action="{{route('employees.update', $employe->matricule)}}">
         @csrf
         @method('patch')
 

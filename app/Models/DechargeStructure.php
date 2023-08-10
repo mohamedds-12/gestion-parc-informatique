@@ -14,4 +14,23 @@ class DechargeStructure extends BaseModel
     protected $guarded = [];
 
 
+    /**
+     * Get all of the materiels for the DechargeStructure
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function materiels()
+    {
+        return $this->hasMany(Materiel::class, 'code_decharge_structure');
+    }
+
+    /**
+     * Get the employe that owns the DechargeStructure
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function employe()
+    {
+        return $this->belongsTo(Employe::class, 'matricule_employe');
+    }
 }
