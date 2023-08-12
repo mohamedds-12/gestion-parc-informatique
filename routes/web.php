@@ -4,6 +4,7 @@ use App\Http\Controllers\AffectationController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\BonEntreController;
 use App\Http\Controllers\BonSortieController;
+use App\Http\Controllers\BonTransfereController;
 use App\Http\Controllers\DechargeFournisseurController;
 use App\Http\Controllers\DechargeStructureController;
 use App\Http\Controllers\EmployeController;
@@ -113,5 +114,13 @@ Route::middleware('auth')->group(function() {
     Route::get('/bons-sortie/{num_bs}/edit', [BonSortieController::class, 'edit'])->name('bons_sortie.edit');
     Route::patch('/bons-sortie/{num_bs}', [BonSortieController::class, 'update'])->name('bons_sortie.update');
     Route::delete('/bons-sortie/{num_bs}/delete', [BonSortieController::class, 'destroy'])->name('bons_sortie.destroy');
+
+    // Bons transfere
+    Route::get('/bons-transfere', [BonTransfereController::class, 'index'])->name('bons_transfere.index');
+    Route::get('/bons-transfere/create', [BonTransfereController::class, 'create'])->name('bons_transfere.create');
+    Route::post('/bons-transfere', [BonTransfereController::class, 'store'])->name('bons_transfere.store');
+    Route::get('/bons-transfere/{num_bs}/edit', [BonTransfereController::class, 'edit'])->name('bons_transfere.edit');
+    Route::patch('/bons-transfere/{num_bs}', [BonTransfereController::class, 'update'])->name('bons_transfere.update');
+    Route::delete('/bons-transfere/{num_bs}/delete', [BonTransfereController::class, 'destroy'])->name('bons_transfere.destroy');
 
 });

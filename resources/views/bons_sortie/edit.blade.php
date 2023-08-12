@@ -23,6 +23,11 @@
         @method('patch')
 
         <div class="mb-3">
+            <label for="" class="form-label">N° bon de sortie</label>
+            <input type="text" class="form-control" disabled readonly value="{{$bon_sortie->num_bs}}">
+        </div>
+
+        <div class="mb-3">
             <label for="employe" class="form-label">Employés</label>
             <select class="form-select" name="employe" id="">
                 <option value="">Sélectionner un employé</option>
