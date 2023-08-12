@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AffectationController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\BonEntreController;
 use App\Http\Controllers\DechargeFournisseurController;
 use App\Http\Controllers\DechargeStructureController;
 use App\Http\Controllers\EmployeController;
@@ -95,5 +96,13 @@ Route::middleware('auth')->group(function() {
     Route::get('/reformations/{code_decharge}/edit', [DechargeStructureController::class, 'edit'])->name('decharges_structure.edit');
     Route::patch('/reformations/{code_decharge}', [DechargeStructureController::class, 'update'])->name('decharges_structure.update');
     Route::delete('/reformations/{code_decharge}/delete', [DechargeStructureController::class, 'destroy'])->name('decharges_structure.destroy');
+
+    // Bons entre
+    Route::get('/bons-entre', [BonEntreController::class, 'index'])->name('bons_entre.index');
+    Route::get('/bons-entre/create', [BonEntreController::class, 'create'])->name('bons_entre.create');
+    Route::post('/bons-entre', [BonEntreController::class, 'store'])->name('bons_entre.store');
+    Route::get('/bons-entre/{code_decharge}/edit', [BonEntreController::class, 'edit'])->name('bons_entre.edit');
+    Route::patch('/bons-entre/{code_decharge}', [BonEntreController::class, 'update'])->name('bons_entre.update');
+    Route::delete('/bons-entre/{code_decharge}/delete', [BonEntreController::class, 'destroy'])->name('bons_entre.destroy');
 
 });
