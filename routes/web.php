@@ -3,6 +3,7 @@
 use App\Http\Controllers\AffectationController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\BonEntreController;
+use App\Http\Controllers\BonSortieController;
 use App\Http\Controllers\DechargeFournisseurController;
 use App\Http\Controllers\DechargeStructureController;
 use App\Http\Controllers\EmployeController;
@@ -101,8 +102,16 @@ Route::middleware('auth')->group(function() {
     Route::get('/bons-entre', [BonEntreController::class, 'index'])->name('bons_entre.index');
     Route::get('/bons-entre/create', [BonEntreController::class, 'create'])->name('bons_entre.create');
     Route::post('/bons-entre', [BonEntreController::class, 'store'])->name('bons_entre.store');
-    Route::get('/bons-entre/{code_decharge}/edit', [BonEntreController::class, 'edit'])->name('bons_entre.edit');
-    Route::patch('/bons-entre/{code_decharge}', [BonEntreController::class, 'update'])->name('bons_entre.update');
-    Route::delete('/bons-entre/{code_decharge}/delete', [BonEntreController::class, 'destroy'])->name('bons_entre.destroy');
+    Route::get('/bons-entre/{num_be}/edit', [BonEntreController::class, 'edit'])->name('bons_entre.edit');
+    Route::patch('/bons-entre/{num_be}', [BonEntreController::class, 'update'])->name('bons_entre.update');
+    Route::delete('/bons-entre/{num_be}/delete', [BonEntreController::class, 'destroy'])->name('bons_entre.destroy');
+
+    // Bons sortie
+    Route::get('/bons-sortie', [BonSortieController::class, 'index'])->name('bons_sortie.index');
+    Route::get('/bons-sortie/create', [BonSortieController::class, 'create'])->name('bons_sortie.create');
+    Route::post('/bons-sortie', [BonSortieController::class, 'store'])->name('bons_sortie.store');
+    Route::get('/bons-sortie/{num_bs}/edit', [BonSortieController::class, 'edit'])->name('bons_sortie.edit');
+    Route::patch('/bons-sortie/{num_bs}', [BonSortieController::class, 'update'])->name('bons_sortie.update');
+    Route::delete('/bons-sortie/{num_bs}/delete', [BonSortieController::class, 'destroy'])->name('bons_sortie.destroy');
 
 });
