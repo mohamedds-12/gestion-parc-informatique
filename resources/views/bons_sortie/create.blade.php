@@ -23,7 +23,7 @@
 
         <div class="mb-3">
             <label for="employe" class="form-label">Employés</label>
-            <select class="form-select" name="employe" id="">
+            <select class="form-select" required name="employe" id="">
                 <option value="">Sélectionner un employé</option>
                 @foreach ($employees as $employe)
                     <option value="{{$employe->matricule}}"> {{ $employe->nom .' '. $employe->prenom}}</option>
@@ -33,7 +33,7 @@
 
         <div class="mb-3">
             <label for="materiel" class="form-label">Matériels</label>
-            <select class="form-select" name="materiel" id="">
+            <select class="form-select" required name="materiel" id="">
                 <option value="">Sélectionner un matériel</option>
                 @foreach ($materiels as $materiel)
                     <option value="{{$materiel->matricule}}"> {{ $materiel->designation}}</option>

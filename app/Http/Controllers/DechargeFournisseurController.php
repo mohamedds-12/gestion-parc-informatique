@@ -42,7 +42,6 @@ class DechargeFournisseurController extends Controller
             'materiels' => 'required|array',
             'fournisseur' =>'required',
             'probleme' => 'required',
-            'observation' => 'required',
         ]);
 
         $decharge_fournisseur = DechargeFournisseur::create([
@@ -98,7 +97,6 @@ class DechargeFournisseurController extends Controller
             'materiels' => 'required|array',
             'fournisseur' =>'required',
             'probleme' => 'required',
-            'observation' => 'required',
         ]);
 
         $decharge_fournisseur->update([

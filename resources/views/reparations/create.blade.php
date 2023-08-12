@@ -23,7 +23,7 @@
 
         <div class="mb-3">
             <label for="materiels" class="form-label">Matériels</label>
-            <select id="materiels" name="materiels[]" class="" required>
+            <select id="materiels" required name="materiels[]" class="" required>
 
 
             </select>
@@ -31,7 +31,7 @@
 
         <div class="mb-3">
             <label for="fournisseur" class="form-label">Fournisseur</label>
-            <select id="fournisseur" name="fournisseur" class="form-select" required>
+            <select id="fournisseur" required name="fournisseur" class="form-select" required>
                 <option value="" disabled selected> Choisir un fournisseur</option>
                 @foreach ($fournisseurs as $fournisseur)
                     <option value="{{ $fournisseur->num_fournisseur }}" @selected(old('fournisseur') == $fournisseur->num_fournisseur)>{{ $fournisseur->nom }}
@@ -42,7 +42,7 @@
 
         <div class="mb-3">
             <label for="probleme" class="form-label">Probléme</label>
-            <textarea name="probleme" class="form-control" id="probleme" cols="20" rows="5"></textarea>
+            <textarea required name="probleme" class="form-control" id="probleme" cols="20" rows="5"></textarea>
         </div>
 
         <div class="mb-3">

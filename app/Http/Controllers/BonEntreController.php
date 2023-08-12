@@ -41,7 +41,6 @@ class BonEntreController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'observation' => 'required',
             'agent' =>'required',
             'employe' =>'required',
             'materiel' => 'required'
@@ -79,7 +78,6 @@ class BonEntreController extends Controller
     public function update(Request $request, $num_be)
     {
         $request->validate([
-            'observation' => 'required',
             'agent' =>'required',
             'employe' =>'required',
             'materiel' => 'required'

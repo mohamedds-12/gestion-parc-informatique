@@ -40,7 +40,6 @@ class EmployeController extends Controller
             'matricule' => 'required',
             'nom' => 'required|max:20',
             'prenom' =>'required|max:20',
-            'num_telephone' => 'required',
             'num_structure' => 'required'
         ]);
 
@@ -83,7 +82,6 @@ class EmployeController extends Controller
         $request->validate([
             'nom' => 'required|max:20',
             'prenom' =>'required|max:20',
-            'num_telephone' => 'required',
             'num_structure' => 'required'
         ]);
 

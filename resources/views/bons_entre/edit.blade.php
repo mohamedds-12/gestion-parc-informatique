@@ -29,7 +29,7 @@
 
         <div class="mb-3">
             <label for="agent" class="form-label">Agents</label>
-            <select class="form-select" name="agent" id="">
+            <select class="form-select" required name="agent" id="">
                 <option value="">Sélectionner un agent</option>
                 @foreach ($agents as $agent)
                     <option value="{{$agent->matricule}}" @selected($agent->matricule == $bon_entre->matricule_agent)> {{ $agent->nom .' '. $agent->prenom}}</option>
@@ -39,7 +39,7 @@
 
         <div class="mb-3">
             <label for="employe" class="form-label">Employés</label>
-            <select class="form-select" name="employe" id="">
+            <select class="form-select" required name="employe" id="">
                 <option value="">Sélectionner un employé</option>
                 @foreach ($employees as $employe)
                     <option value="{{$employe->matricule}}" @selected($employe->matricule == $bon_entre->matricule_employe)> {{ $employe->nom .' '. $employe->prenom}}</option>
@@ -49,7 +49,7 @@
 
         <div class="mb-3">
             <label for="materiel" class="form-label">Matériels</label>
-            <select class="form-select" name="materiel" id="">
+            <select class="form-select" required name="materiel" id="">
                 <option value="">Sélectionner un matériel</option>
                 @foreach ($materiels as $materiel)
                     <option value="{{$materiel->matricule}}"  @selected($materiel->matricule == $bon_entre->matricule_materiel)> {{ $materiel->designation}}</option>

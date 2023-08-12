@@ -23,23 +23,23 @@
 
         <div class="mb-3">
             <label for="designation" class="form-label">Désignation</label>
-            <input type="text" class="form-control" id="designation" name="designation" value="{{old('designation')}}">
+            <input type="text" class="form-control" id="designation" required name="designation" value="{{old('designation')}}">
         </div>
         <div class="mb-3">
             <label for="modele" class="form-label">Modéle</label>
-            <input type="text" class="form-control" id="modele" name="modele" value="{{old('modele')}}">
+            <input type="text" class="form-control" id="modele" required name="modele" value="{{old('modele')}}">
         </div>
         <div class="mb-3">
             <label for="reference" class="form-label">Référence</label>
-            <input type="text" class="form-control" id="reference" name="reference" value="{{old('reference')}}">
+            <input type="text" class="form-control" id="reference" required name="reference" value="{{old('reference')}}">
         </div>
         <div class="mb-3">
             <label for="num_serie" class="form-label">N° Série</label>
-            <input type="text" class="form-control" id="num_serie" name="num_serie" value="{{old('num_serie')}}">
+            <input type="text" class="form-control" id="num_serie" required name="num_serie" value="{{old('num_serie')}}">
         </div>
         <div class="mb-3">
             <label for="code_immo" class="form-label">Code IMMO</label>
-            <input type="text" class="form-control" id="code_immo" name="code_immo" value="{{old('code_immo')}}">
+            <input type="text" class="form-control" id="code_immo" required name="code_immo" value="{{old('code_immo')}}">
         </div>
 
 

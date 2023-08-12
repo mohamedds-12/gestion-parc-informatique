@@ -39,7 +39,6 @@ class BonSortieController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'observation' => 'required',
             'employe' =>'required',
             'materiel' => 'required'
         ]);
@@ -75,7 +74,6 @@ class BonSortieController extends Controller
     public function update(Request $request, $num_bs)
     {
         $request->validate([
-            'observation' => 'required',
             'employe' =>'required',
             'materiel' => 'required'
         ]);

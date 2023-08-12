@@ -30,7 +30,7 @@
 
         <div class="mb-3">
             <label for="nom" class="form-label">Nom</label>
-            <input type="text" class="form-control" name="nom" id="nom" value="{{ $fournisseur->nom }}">
+            <input type="text" class="form-control" name="nom" required id="nom" value="{{ $fournisseur->nom }}">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

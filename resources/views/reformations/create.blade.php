@@ -23,13 +23,13 @@
 
         <div class="mb-3">
             <label for="materiels" class="form-label">Matériels</label>
-            <select id="materiels" name="materiels[]" class="" required>
+            <select id="materiels" required name="materiels[]" class="" required>
             </select>
         </div>
 
         <div class="mb-3">
             <label for="employe" class="form-label">Employé</label>
-            <select id="employe" name="employe" class="form-select" required>
+            <select id="employe" required name="employe" class="form-select" required>
                 <option value="" selected>Sélectionner un employé</option>
                 @foreach ($employees as $employe)
                     <option value="{{$employe->matricule}}">{{ $employe->nom. ' - '. $employe->structure->designation }}</option>

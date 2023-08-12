@@ -29,7 +29,7 @@
 
         <div class="mb-3">
             <label for="materiels" class="form-label">Matériels</label>
-            <select id="materiels" name="materiels[]" class="" required multiple>
+            <select id="materiels" required name="materiels[]" class="" required multiple>
 
 
             </select>
@@ -37,7 +37,7 @@
 
         <div class="mb-3">
             <label for="ancienne_site" class="form-label">Ancienne site</label>
-            <select class="form-select" name="ancienne_site" id="">
+            <select class="form-select" required name="ancienne_site" id="">
                 <option value="">Sélectionner un site</option>
                 @foreach ($sites as $site)
                     <option value="{{$site}}" @selected($site == $bon_transfere->ancienne_site)> {{ $site}}</option>
@@ -47,7 +47,7 @@
 
         <div class="mb-3">
             <label for="nouvelle_site" class="form-label">Nouvelle site</label>
-            <select class="form-select" name="nouvelle_site" id="">
+            <select class="form-select" required name="nouvelle_site" id="">
                 <option value="">Sélectionner un site</option>
                 @foreach ($sites as $site)
                     <option value="{{ $site }}" @selected($site == $bon_transfere->nouvelle_site)> {{ $site }}</option>

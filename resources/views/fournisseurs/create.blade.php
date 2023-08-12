@@ -23,7 +23,7 @@
 
         <div class="mb-3">
             <label for="nom" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="nom" name="nom" value="{{old('nom')}}">
+            <input type="text" class="form-control" id="nom" required name="nom" value="{{old('nom')}}">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

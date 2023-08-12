@@ -30,11 +30,11 @@
 
         <div class="mb-3">
             <label for="nom" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="nom" name="nom" value="{{$employe->nom}}">
+            <input type="text" class="form-control" id="nom" required name="nom" value="{{$employe->nom}}">
         </div>
         <div class="mb-3">
             <label for="prenom" class="form-label">Prénom</label>
-            <input type="text" class="form-control" id="prenom" name="prenom" value="{{$employe->prenom}}">
+            <input type="text" class="form-control" id="prenom" required name="prenom" value="{{$employe->prenom}}">
         </div>
         <div class="mb-3">
             <label for="num_telephone" class="form-label">Numéro de téléphone </label>
@@ -42,7 +42,7 @@
         </div>
         <div class="mb-3">
             <label for="structure" class="form-label">Structure</label>
-            <select name="num_structure" class="form-select">
+            <select required name="num_structure" class="form-select">
                 @foreach ($structures as $structure)
                     <option value="{{ $structure->num_structure}}" @selected($employe->num_structure == $structure->num_structure)>{{ $structure->designation}}</option>
                 @endforeach
