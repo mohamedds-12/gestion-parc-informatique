@@ -53,6 +53,7 @@ class BonEntreController extends Controller
             'matricule_employe' => $request->employe,
             'matricule_agent' => $request->agent,
             'matricule_materiel' => $request->materiel,
+            'date_entre' => now()
         ]);
 
         return redirect()->route('bons_entre.index')->with('success', "Bon d'entré creé avec succès");

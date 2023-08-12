@@ -20,6 +20,7 @@
             <th>Employé</th>
             <th>Matériel</th>
             <th>Observation</th>
+            <th>Date d'entrée</th>
             <th class="text-center" width="20%">Actions</th>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
                     <td>{{ $bon_entre->employe->nom .' '. $bon_entre->employe->prenom }}</td>
                     <td>{{ $bon_entre->materiel->designation }}</td>
                     <td>{{ $bon_entre->observation }}</td>
+                    <td>{{ $bon_entre->date_entre }}</td>
                     <td>
                         <div class="d-flex justify-content-between">
                             <a href="{{ route('bons_entre.edit', $bon_entre->num_be) }}" class="btn btn-info btn-sm">
