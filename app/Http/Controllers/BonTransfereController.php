@@ -14,7 +14,7 @@ class BonTransfereController extends Controller
     protected $sites;
 
     public function __construct() {
-        $this->sites = require(base_path('app/helpers/sites.php'));
+        $this->sites = require(base_path('app/Helpers/Sites.php'));
     }
 
     /**

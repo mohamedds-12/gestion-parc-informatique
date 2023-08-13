@@ -11,7 +11,7 @@ class StructureController extends Controller
     protected $wilayas;
 
     public function __construct() {
-        $this->wilayas = require(base_path('app/helpers/wilayas.php'));
+        $this->wilayas = require(base_path('app/Helpers/Wilayas.php'));
     }
     /**
      * Display a listing of the resource.
