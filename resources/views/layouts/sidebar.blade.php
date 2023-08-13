@@ -5,11 +5,15 @@
             <div class="nav">
                 {{-- <div class="sb-sidenav-menu-heading">Core</div> --}}
                 <a class="nav-link" href="{{ route('dashboard') }}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="sb-nav-link-icon">
+                        {{-- <i class="fas fa-tachometer-alt"></i> --}}
+                    </div>
                     Dashboard
                 </a>
                 <a class="nav-link" href="{{ route('agents.index') }}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                    <div class="sb-nav-link-icon">
+                        {{-- <i class="fas fa-users"></i> --}}
+                    </div>
                     Agents
                 </a>
                 <a class="nav-link" href="{{ route('structures.index') }}">

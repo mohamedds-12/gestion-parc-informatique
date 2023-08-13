@@ -5,6 +5,7 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\BonEntreController;
 use App\Http\Controllers\BonSortieController;
 use App\Http\Controllers\BonTransfereController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DechargeFournisseurController;
 use App\Http\Controllers\DechargeStructureController;
 use App\Http\Controllers\EmployeController;
@@ -31,7 +32,7 @@ Route::view('/login', 'login');
 Route::post('/login', [AgentController::class, 'login'])->name('login');
 
 Route::middleware('auth')->group(function() {
-    Route::view('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
     Route::post('/logout', [AgentController::class, 'logout'])->name('logout');
 
