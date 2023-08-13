@@ -32,7 +32,7 @@
             <select class="form-select" required name="employe" id="">
                 <option value="">Sélectionner un employé</option>
                 @foreach ($employees as $employe)
-                    <option value="{{$employe->matricule}}" @selected($employe->matricule == $bon_sortie->matricule_employe)> {{ $employe->nom .' '. $employe->prenom}}</option>
+                    <option value="{{$employe->matricule}}" @if($employe->matricule == $bon_sortie->matricule_employe) selected @endif> {{ $employe->nom .' '. $employe->prenom}}</option>
                 @endforeach
             </select>
         </div>
@@ -42,7 +42,7 @@
             <select class="form-select" required name="materiel" id="">
                 <option value="">Sélectionner un matériel</option>
                 @foreach ($materiels as $materiel)
-                    <option value="{{$materiel->matricule}}"  @selected($materiel->matricule == $bon_sortie->matricule_materiel)> {{ $materiel->designation}}</option>
+                    <option value="{{$materiel->matricule}}"  @if($materiel->matricule == $bon_sortie->matricule_materiel) selected @endif> {{ $materiel->designation}}</option>
                 @endforeach
             </select>
         </div>

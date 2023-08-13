@@ -40,7 +40,7 @@
             <select class="form-select" required name="ancienne_site" id="">
                 <option value="">Sélectionner un site</option>
                 @foreach ($sites as $site)
-                    <option value="{{$site}}" @selected($site == $bon_transfere->ancienne_site)> {{ $site}}</option>
+                    <option value="{{$site}}" @if($site == $bon_transfere->ancienne_site) selected @endif> {{ $site}}</option>
                 @endforeach
             </select>
         </div>
@@ -50,7 +50,7 @@
             <select class="form-select" required name="nouvelle_site" id="">
                 <option value="">Sélectionner un site</option>
                 @foreach ($sites as $site)
-                    <option value="{{ $site }}" @selected($site == $bon_transfere->nouvelle_site)> {{ $site }}</option>
+                    <option value="{{ $site }}" @if($site == $bon_transfere->nouvelle_site) selected @endif> {{ $site }}</option>
                 @endforeach
             </select>
         </div>

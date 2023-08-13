@@ -33,7 +33,9 @@
                 <option value="" disabled> Choisir un employé</option>
                 @foreach ($employees as $employe)
                     <option value="{{ $employe->matricule }}"
-                        @selected($employe->matricule == $affectation->employe->matricule)
+                        @if($employe->matricule == $affectation->employe->matricule)
+                            selected
+                        @endif
                         >{{ $employe->nom }}</option>
                 @endforeach
             </select>
@@ -45,7 +47,9 @@
                 <option value="" disabled> Choisir un matériel</option>
                 @foreach ($materiels as $materiel)
                     <option value="{{ $materiel->matricule }}"
-                        @selected($materiel->matricule == $affectation->materiel->matricule)
+                        @if($materiel->matricule == $affectation->materiel->matricule)
+                        selected
+                        @endif
                         >{{ $materiel->designation }}</option>
                 @endforeach
             </select>

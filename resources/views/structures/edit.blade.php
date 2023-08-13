@@ -38,7 +38,7 @@
             <select required name="wilaya" class="form-select">
                 <option value="" disabled selected>Sélectionner une wilaya</option>
                 @foreach ($wilayas as $wilaya)
-                    <option value="{{ $wilaya }}" @selected($structure->wilaya == $wilaya)>{{ $wilaya }}</option>
+                    <option value="{{ $wilaya }}" @if($structure->wilaya == $wilaya)  selected @endif>{{ $wilaya }}</option>
                 @endforeach
             </select>
         </div>

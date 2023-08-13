@@ -26,7 +26,7 @@
             <select id="employe" name="employe" class="form-select" required>
                 <option value="" disabled selected> Choisir un employé</option>
                 @foreach ($employees as $employe)
-                    <option value="{{ $employe->matricule }}" @selected(old('employe') == $employe->matricule)>{{ $employe->nom }}</option>
+                    <option value="{{ $employe->matricule }}" @if(old('employe') == $employe->matricule) selected @endif>{{ $employe->nom }}</option>
                 @endforeach
             </select>
         </div>
@@ -36,7 +36,7 @@
             <select id="materiel" name="materiel" class="form-select" required>
                 <option value="" disabled selected> Choisir un matériel</option>
                 @foreach ($materiels as $materiel)
-                    <option value="{{ $materiel->matricule }}" @selected(old('materiel') == $materiel->matricule)>{{ $materiel->designation }}</option>
+                    <option value="{{ $materiel->matricule }}" @if(old('materiel') == $materiel->matricule) selected @endif>{{ $materiel->designation }}</option>
                 @endforeach
             </select>
         </div>

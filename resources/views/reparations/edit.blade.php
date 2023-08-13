@@ -41,7 +41,7 @@
             <select id="fournisseur" required name="fournisseur" class="form-select" required>
                 <option value="" disabled selected> Choisir un fournisseur</option>
                 @foreach ($fournisseurs as $fournisseur)
-                    <option value="{{ $fournisseur->num_fournisseur }}" @selected($decharge_fournisseur->fournisseur->num_fournisseur == $fournisseur->num_fournisseur)>{{ $fournisseur->nom }}
+                    <option value="{{ $fournisseur->num_fournisseur }}" @if($decharge_fournisseur->fournisseur->num_fournisseur == $fournisseur->num_fournisseur)  selected @endif>{{ $fournisseur->nom }}
                     </option>
                 @endforeach
             </select>

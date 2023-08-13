@@ -44,7 +44,7 @@
             <label for="structure" class="form-label">Structure</label>
             <select required name="num_structure" class="form-select">
                 @foreach ($structures as $structure)
-                    <option value="{{ $structure->num_structure}}" @selected($employe->num_structure == $structure->num_structure)>{{ $structure->designation}}</option>
+                    <option value="{{ $structure->num_structure}}" @if($employe->num_structure == $structure->num_structure) selected @endif>{{ $structure->designation}}</option>
                 @endforeach
             <select>
         </div>
