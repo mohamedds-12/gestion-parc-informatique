@@ -3,13 +3,13 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-                {{-- <div class="sb-sidenav-menu-heading">Core</div> --}}
                 <a class="nav-link" href="{{ route('dashboard') }}">
                     <div class="sb-nav-link-icon">
                         {{-- <i class="fas fa-tachometer-alt"></i> --}}
                     </div>
                     Dashboard
                 </a>
+                <div class="sb-sidenav-menu-heading">Principales</div>
                 <a class="nav-link" href="{{ route('agents.index') }}">
                     <div class="sb-nav-link-icon">
                         {{-- <i class="fas fa-users"></i> --}}
@@ -22,7 +22,7 @@
                 </a>
                 <a class="nav-link" href="{{ route('employees.index') }}">
                     <div class="sb-nav-link-icon"></div>
-                    Empoyées
+                    Employés
                 </a>
                 <a class="nav-link" href="{{ route('materiels.index') }}">
                     <div class="sb-nav-link-icon"></div>
@@ -32,6 +32,7 @@
                     <div class="sb-nav-link-icon"></div>
                     Fournisseurs
                 </a>
+                <div class="sb-sidenav-menu-heading">Procédures</div>
                 <a class="nav-link" href="{{ route('affectations.index') }}">
                     <div class="sb-nav-link-icon"></div>
                     Affectations
@@ -44,6 +45,7 @@
                     <div class="sb-nav-link-icon"></div>
                     Réformations
                 </a>
+                <div class="sb-sidenav-menu-heading">bons</div>
                 <a class="nav-link" href="{{ route('bons_entre.index') }}">
                     <div class="sb-nav-link-icon"></div>
                     Bons entré
