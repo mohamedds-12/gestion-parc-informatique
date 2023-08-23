@@ -3,20 +3,20 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-                <a class="nav-link" href="{{ route('dashboard') }}">
+                <a class="nav-link @if(request()->is('dashboard')) active @endif" href="{{ route('dashboard') }}">
                     <div class="sb-nav-link-icon">
                         {{-- <i class="fas fa-tachometer-alt"></i> --}}
                     </div>
                     Dashboard
                 </a>
                 <div class="sb-sidenav-menu-heading">Principales</div>
-                <a class="nav-link" href="{{ route('agents.index') }}">
+                <a class="nav-link @if(request()->is('agents*')) active @endif" href="{{ route('agents.index') }}">
                     <div class="sb-nav-link-icon">
                         {{-- <i class="fas fa-users"></i> --}}
                     </div>
                     Agents
                 </a>
-                <a class="nav-link" href="{{ route('structures.index') }}">
+                <a class="nav-link @if(request()->is('structures*')) active @endif" href="{{ route('structures.index') }}">
                     <div class="sb-nav-link-icon"></div>
                     Structures
                 </a>
@@ -24,37 +24,37 @@
                     <div class="sb-nav-link-icon"></div>
                     Employés
                 </a>
-                <a class="nav-link" href="{{ route('materiels.index') }}">
+                <a class="nav-link @if(request()->is('materiels*')) active @endif" href="{{ route('materiels.index') }}">
                     <div class="sb-nav-link-icon"></div>
                     Matériels
                 </a>
-                <a class="nav-link" href="{{ route('fournisseurs.index') }}">
+                <a class="nav-link @if(request()->is('fournisseurs*')) active @endif" href="{{ route('fournisseurs.index') }}">
                     <div class="sb-nav-link-icon"></div>
                     Fournisseurs
                 </a>
                 <div class="sb-sidenav-menu-heading">Procédures</div>
-                <a class="nav-link" href="{{ route('affectations.index') }}">
+                <a class="nav-link @if(request()->is('affectations*')) active @endif" href="{{ route('affectations.index') }}">
                     <div class="sb-nav-link-icon"></div>
                     Affectations
                 </a>
-                <a class="nav-link" href="{{ route('decharges_fournisseur.index') }}">
+                <a class="nav-link @if(request()->is('reparations*')) active @endif" href="{{ route('decharges_fournisseur.index') }}">
                     <div class="sb-nav-link-icon"></div>
                     Réparations
                 </a>
-                <a class="nav-link" href="{{ route('decharges_structure.index') }}">
+                <a class="nav-link @if(request()->is('reformations*')) active @endif" href="{{ route('decharges_structure.index') }}">
                     <div class="sb-nav-link-icon"></div>
                     Réformations
                 </a>
                 <div class="sb-sidenav-menu-heading">bons</div>
-                <a class="nav-link" href="{{ route('bons_entre.index') }}">
+                <a class="nav-link @if(request()->is('bons_entre*')) active @endif" href="{{ route('bons_entre.index') }}">
                     <div class="sb-nav-link-icon"></div>
                     Bons entré
                 </a>
-                <a class="nav-link" href="{{ route('bons_sortie.index') }}">
+                <a class="nav-link @if(request()->is('bons_sortie*')) active @endif" href="{{ route('bons_sortie.index') }}">
                     <div class="sb-nav-link-icon"></div>
                     Bons sortie
                 </a>
-                <a class="nav-link" href="{{ route('bons_transfere.index') }}">
+                <a class="nav-link @if(request()->is('bons_transfere*')) active @endif" href="{{ route('bons_transfere.index') }}">
                     <div class="sb-nav-link-icon"></div>
                     Bons transfére
                 </a>
