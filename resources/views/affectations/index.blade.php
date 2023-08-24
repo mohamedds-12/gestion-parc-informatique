@@ -25,7 +25,7 @@
             @foreach ($affectations as $affectation)
                 <tr>
                     <td>{{ $affectation->code_affectation }}</td>
-                    <td>{{ $affectation?->employe->nom}}</td>
+                    <td>{{ $affectation->employe?->nom}}</td>
                     <td>{{ $affectation->materiel?->designation }}</td>
                     <td>{{ $affectation->date_affectation }}</td>
                     <td>
