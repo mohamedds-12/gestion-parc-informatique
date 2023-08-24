@@ -15,6 +15,7 @@ class Agent extends Authenticatable
     protected $table = "agent";
     protected $primaryKey = "matricule";
     protected $guarded = [];
+    public $timestamps = false;
 
     /**
      * Get all of the bonsEntre for the Agent
