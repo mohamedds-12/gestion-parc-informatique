@@ -38,8 +38,8 @@ class MaterielController extends Controller
         $request->validate([
             'designation' => 'required|max:40',
             'modele' =>'required|max:15',
-            'num_serie' => "required|max:25|unique:materiel,num_serie",
-            'code_immo' => "required|max:15|unique:materiel,code_immo",
+            'num_serie' => "required|max:25|unique:matériel,num_serie",
+            'code_immo' => "required|max:15|unique:matériel,code_immo",
             'reference' => 'required|max:10',
         ]);
 
