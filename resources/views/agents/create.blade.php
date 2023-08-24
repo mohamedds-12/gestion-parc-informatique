@@ -39,11 +39,11 @@
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Mot de passe</label>
-            <input type="password" class="form-control" id="password" name="password" required value="{{old('password')}}">
+            <input type="text" class="form-control" id="password" name="password" required value="{{old('password')}}">
         </div>
         <div class="mb-3">
             <label for="password_confirm" class="form-label">Confirmer mot de passe</label>
-            <input type="password" class="form-control" id="password_confirm" name="password_confirmation" required value="{{old('password_confirmation')}}">
+            <input type="text" class="form-control" id="password_confirm" name="password_confirmation" required value="{{old('password_confirmation')}}">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
