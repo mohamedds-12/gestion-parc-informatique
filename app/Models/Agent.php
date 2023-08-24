@@ -15,4 +15,14 @@ class Agent extends Authenticatable
     protected $table = "agent";
     protected $primaryKey = "matricule";
     protected $guarded = [];
+
+    /**
+     * Get all of the bonsEntre for the Agent
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bonsEntre()
+    {
+        return $this->hasMany(BonEntre::class, 'matricule_agent');
+    }
 }

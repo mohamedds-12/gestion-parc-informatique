@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-    Employées
+    Employés
 @endsection
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="">Employées</h1>
+        <h1 class="">Employés</h1>
 
         <a name="" id="" class="btn btn-primary" href="{{ route('employees.create') }}" role="button">
             <i class="fa-solid fa-circle-plus"></i> Ajouter
@@ -29,7 +29,7 @@
                     <td>{{ $employe->nom }}</td>
                     <td>{{ $employe->prenom }}</td>
                     <td>{{ $employe->num_telephone }}</td>
-                    <td>{{ $employe->structure->designation}}</td>
+                    <td>{{ $employe->structure?->designation}}</td>
                     <td>
                         <div class="d-flex justify-content-between">
                             <a href="{{ route('employees.edit', $employe->matricule) }}" class="btn btn-info btn-sm">

@@ -108,10 +108,10 @@ class StructureController extends Controller
     public function destroy($num_structure)
     {
         $structure = Structure::find($num_structure);
-        if ($structure->employes->isNotEmpty()) {
-            alert()->error('Échec de la suppression de la structure !', 'La structure a été utilisée par des employés')->persistent();
-            return redirect()->back();
-        }
+        // if ($structure->employes->isNotEmpty()) {
+        //     alert()->error('Échec de la suppression de la structure !', 'La structure a été utilisée par des employés')->persistent();
+        //     return redirect()->back();
+        // }
 
         $structure->delete();
 

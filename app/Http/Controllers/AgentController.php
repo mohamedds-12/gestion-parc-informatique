@@ -139,7 +139,14 @@ class AgentController extends Controller
      */
     public function destroy($matricule)
     {
-        $agent = Agent::find($matricule)->delete();
+        $agent = Agent::find($matricule);
+        // if ($agent->bonsEntre->isNotEmpty()) {
+        //     alert()->error("Échec de la suppression de l'agent !", "L'agent est utilisé par des bons d'entré")->persistent();
+        //     return redirect()->back();
+        // }
+
+        $agent->delete();
+
         return redirect()->route('agents.index')->with('success', 'Agent supprimé avec succès');
     }
 }

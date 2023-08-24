@@ -127,12 +127,12 @@ class BonTransfereController extends Controller
     {
         $bon_transfere = BonTransfere::find($num_bt);
 
-        foreach ($bon_transfere->materiels as $materiel) {
-            // detach materiels from the bon tansfere
-            $materiel->update([
-                'num_bt' => null
-            ]);
-        }
+        // foreach ($bon_transfere->materiels as $materiel) {
+        //     // detach materiels from the bon tansfere
+        //     $materiel->update([
+        //         'num_bt' => null
+        //     ]);
+        // }
         $bon_transfere->delete();
 
         return redirect()->route('bons_transfere.index')->with('success', "Bon de transfére supprimé avec succès");

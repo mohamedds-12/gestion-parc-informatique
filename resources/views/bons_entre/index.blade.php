@@ -27,9 +27,9 @@
             @foreach ($bons_entre as $bon_entre)
                 <tr>
                     <td>{{ $bon_entre->num_be }}</td>
-                    <td>{{ $bon_entre->agent->nom .' '. $bon_entre->agent->prenom }}</td>
-                    <td>{{ $bon_entre->employe->nom .' '. $bon_entre->employe->prenom }}</td>
-                    <td>{{ $bon_entre->materiel->designation }}</td>
+                    <td>{{ $bon_entre->agent?->nom .' '. $bon_entre->agent?->prenom }}</td>
+                    <td>{{ $bon_entre->employe?->nom .' '. $bon_entre->employe?->prenom }}</td>
+                    <td>{{ $bon_entre->materiel?->designation }}</td>
                     <td>{{ $bon_entre->observation }}</td>
                     <td>{{ $bon_entre->date_entre }}</td>
                     <td>

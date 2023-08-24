@@ -33,8 +33,8 @@
                             </div>
                         @endforeach
                     </td>
-                    <td>{{ $decharge_structure->employe->structure->designation }}</td>
-                    <td>{{ $decharge_structure->employe->nom }}</td>
+                    <td>{{ $decharge_structure->employe?->structure->designation }}</td>
+                    <td>{{ $decharge_structure->employe?->nom }}</td>
                     <td>{{ $decharge_structure->date_decharge }}</td>
                     <td>
                         <div class="d-flex justify-content-between">

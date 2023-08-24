@@ -26,8 +26,8 @@
             @foreach ($bons_sortie as $bon_sortie)
                 <tr>
                     <td>{{ $bon_sortie->num_bs }}</td>
-                    <td>{{ $bon_sortie->employe->nom .' '. $bon_sortie->employe->prenom }}</td>
-                    <td>{{ $bon_sortie->materiel->designation }}</td>
+                    <td>{{ $bon_sortie->employe?->nom .' '. $bon_sortie->employe?->prenom }}</td>
+                    <td>{{ $bon_sortie->materiel?->designation }}</td>
                     <td>{{ $bon_sortie->observation }}</td>
                     <td>{{ $bon_sortie->date_sortie }}</td>
                     <td>
