@@ -32,7 +32,7 @@
             <select id="employe" required name="employe" class="form-select" required>
                 <option value="" selected>Sélectionner un employé</option>
                 @foreach ($employees as $employe)
-                    <option value="{{$employe->matricule}}">{{ $employe->nom. ' - '. $employe->structure->designation }}</option>
+                    <option value="{{$employe->matricule}}">{{ $employe->nom. ' - '. $employe->structure?->designation }}</option>
                 @endforeach
             </select>
         </div>

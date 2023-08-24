@@ -35,7 +35,7 @@
                         @endforeach
                     </td>
                     <td>{{ $decharge_fournissuer->probleme }}</td>
-                    <td>{{ $decharge_fournissuer->fournisseur->nom }}</td>
+                    <td>{{ $decharge_fournissuer->fournisseur?->nom }}</td>
                     <td>{{ $decharge_fournissuer->observation }}</td>
                     <td>{{ $decharge_fournissuer->date_decharge }}</td>
                     <td>
