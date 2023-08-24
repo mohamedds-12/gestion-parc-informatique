@@ -22,7 +22,7 @@
         @csrf
 
         <div class="mb-3">
-            <label for="agent" class="form-label">Agents</label>
+            <label for="agent" class="form-label">Agent</label>
             <select class="form-select" required name="agent" id="">
                 <option value="">Sélectionner un agent</option>
                 @foreach ($agents as $agent)
@@ -32,7 +32,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="employe" class="form-label">Employés</label>
+            <label for="employe" class="form-label">Employé</label>
             <select class="form-select" required name="employe" id="">
                 <option value="">Sélectionner un employé</option>
                 @foreach ($employees as $employe)
@@ -42,7 +42,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="materiel" class="form-label">Matériels</label>
+            <label for="materiel" class="form-label">Matériel</label>
             <select class="form-select" required name="materiel" id="">
                 <option value="">Sélectionner un matériel</option>
                 @foreach ($materiels as $materiel)
