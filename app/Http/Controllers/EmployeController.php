@@ -41,6 +41,7 @@ class EmployeController extends Controller
             'nom' => 'required|max:20',
             'prenom' =>'required|max:20',
             'num_structure' => 'required',
+            'num_telephone' => 'regex:/^([0-9]{2}-?){5}$/'
         ]);
 
         Employe::create([
@@ -83,7 +84,7 @@ class EmployeController extends Controller
             'nom' => 'required|max:20',
             'prenom' =>'required|max:20',
             'num_structure' => 'required',
-
+            'num_telephone' => 'regex:/^([0-9]{2}-?){5}$/'
         ]);
 
         Employe::find($matricule)->update([
