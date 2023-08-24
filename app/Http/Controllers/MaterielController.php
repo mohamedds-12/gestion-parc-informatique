@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Enums\MaterielStatus;
 use App\Helpers\Tools;
 use App\Models\Materiel;
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule as ValidationRule;
 
 class MaterielController extends Controller
 {
@@ -36,8 +38,8 @@ class MaterielController extends Controller
         $request->validate([
             'designation' => 'required|max:40',
             'modele' =>'required|max:15',
-            'num_serie' => 'required|max:25',
-            'code_immo' => 'required|max:15',
+            'num_serie' => "required|max:25|unique:materiel,num_serie",
+            'code_immo' => "required|max:15|unique:materiel,code_immo",
             'reference' => 'required|max:10',
         ]);
 
@@ -70,6 +72,7 @@ class MaterielController extends Controller
         $materiel = Materiel::find($matricule);
         return view('materiels.edit', [
             'materiel' => $materiel,
+            'statuses' => MaterielStatus::casesToArray()
         ]);
     }
 
@@ -83,8 +86,8 @@ class MaterielController extends Controller
         $request->validate([
             'designation' => 'required|max:40',
             'modele' =>'required|max:15',
-            'num_serie' => 'required|max:25',
-            'code_immo' => "required|max:15|unique:materiel,code_immo,except,code_immo,$materiel->code_immo",
+            'num_serie' => ["required", "max:25", ValidationRule::unique('matériel', 'num_serie')->ignore($materiel->matricule, 'matricule')],
+            'code_immo' => ["required", "max:15", ValidationRule::unique('matériel', 'code_immo')->ignore($materiel->matricule, 'matricule')],
             'reference' => 'required|max:10',
         ]);
 
@@ -94,6 +97,7 @@ class MaterielController extends Controller
             'code_immo' => $request->code_immo,
             'reference' => $request->reference,
             'modele' => $request->modele,
+            'etat' => $request->etat,
         ]);
 
         return redirect()->route('materiels.index')->with('success', 'Materiel mis à jour avec succès');

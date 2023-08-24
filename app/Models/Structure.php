@@ -13,4 +13,13 @@ class Structure extends BaseModel
     protected $primaryKey = "num_structure";
     protected $guarded = [];
 
+    /**
+     * Get all of the employes for the Structure
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function employes()
+    {
+        return $this->hasMany(Employe::class, 'num_structure');
+    }
 }

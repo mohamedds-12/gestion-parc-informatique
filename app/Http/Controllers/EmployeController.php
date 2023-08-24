@@ -40,7 +40,7 @@ class EmployeController extends Controller
             'matricule' => 'required',
             'nom' => 'required|max:20',
             'prenom' =>'required|max:20',
-            'num_structure' => 'required'
+            'num_structure' => 'required',
         ]);
 
         Employe::create([
@@ -82,7 +82,8 @@ class EmployeController extends Controller
         $request->validate([
             'nom' => 'required|max:20',
             'prenom' =>'required|max:20',
-            'num_structure' => 'required'
+            'num_structure' => 'required',
+
         ]);
 
         Employe::find($matricule)->update([

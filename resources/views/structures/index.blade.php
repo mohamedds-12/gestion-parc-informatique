@@ -18,7 +18,7 @@
             <th>N° Strcuture</th>
             <th>Désignation</th>
             <th>Désignation site</th>
-            <th>Wilaya</th>
+            <th>Région</th>
             <th class="text-center" width="20%">Actions</th>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
                     <td>{{ $structure->num_structure }}</td>
                     <td>{{ $structure->designation }}</td>
                     <td>{{ $structure->designation_site }}</td>
-                    <td>{{ $structure->wilaya }}</td>
+                    <td>{{ $structure->region }}</td>
                     <td>
                         <div class="d-flex justify-content-between">
                             <a href="{{ route('structures.edit', ['num_structure' => $structure->num_structure]) }}" class="btn btn-info btn-sm">

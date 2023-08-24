@@ -27,14 +27,19 @@
         </div>
         <div class="mb-3">
             <label for="designation_site" class="form-label">Désignation site</label>
-            <input type="text" class="form-control" id="designation_site" required name="designation_site" value="{{old('designation_site')}}">
+            <select required id="designation_site" name="designation_site" class="form-select">
+                <option value="" disabled selected>Sélectionner un site</option>
+                @foreach ($sites as $site)
+                    <option value="{{ $site }}">{{ $site }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
-            <label for="num_telephone" class="form-label">Wilaya</label>
-            <select required name="wilaya" class="form-select">
-                <option value="" disabled selected>Sélectionner une wilaya</option>
-                @foreach ($wilayas as $wilaya)
-                    <option value="{{ $wilaya }}">{{ $wilaya }}</option>
+            <label for="num_telephone" class="form-label">Région</label>
+            <select required name="region" class="form-select">
+                <option value="" disabled selected>Sélectionner une région</option>
+                @foreach ($regions as $region)
+                    <option value="{{ $region }}">{{ $region }}</option>
                 @endforeach
             </select>
         </div>

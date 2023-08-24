@@ -4,7 +4,6 @@
     Modifier le matériel
 @endsection
 
-
 @section('content')
     <h1>Modifier le matériel</h1>
 
@@ -38,6 +37,14 @@
         <div class="mb-3">
             <label for="reference" class="form-label">Référence</label>
             <input type="text" class="form-control" id="reference" required name="reference" value="{{ $materiel->reference }}">
+        </div>
+        <div class="mb-3">
+            <label for="etat" class="form-label">Etat</label>
+            <select class="form-select" name="etat" id="etat">
+                @foreach ($statuses as $status => $key)
+                    <option value="{{$status}}" @if($status == $materiel->etat) selected @endif>{{$status}}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
             <label for="num_serie" class="form-label">N° Série</label>

@@ -4,7 +4,6 @@
     Modifier une structure
 @endsection
 
-
 @section('content')
     <h1>Modifier une structure</h1>
     @if ($errors->any())
@@ -29,16 +28,23 @@
             <label for="designation" class="form-label">Désignation</label>
             <input type="text" class="form-control" id="designation" required name="designation" value="{{$structure->designation}}">
         </div>
+
         <div class="mb-3">
             <label for="designation_site" class="form-label">Désignation site</label>
-            <input type="text" class="form-control" id="designation_site" required name="designation_site" value="{{$structure->designation_site}}">
+            <select required id="designation_site" name="designation_site" class="form-select">
+                <option value="" disabled selected>Sélectionner un site</option>
+                @foreach ($sites as $site)
+                    <option value="{{ $site }}" @if($structure->designation_site == $site)  selected @endif>{{ $site }}</option>
+                @endforeach
+            </select>
         </div>
+
         <div class="mb-3">
-            <label for="num_telephone" class="form-label">Wilaya</label>
-            <select required name="wilaya" class="form-select">
-                <option value="" disabled selected>Sélectionner une wilaya</option>
-                @foreach ($wilayas as $wilaya)
-                    <option value="{{ $wilaya }}" @if($structure->wilaya == $wilaya)  selected @endif>{{ $wilaya }}</option>
+            <label for="num_telephone" class="form-label">Région</label>
+            <select required name="region" class="form-select">
+                <option value="" disabled selected>Sélectionner une région</option>
+                @foreach ($regions as $region)
+                    <option value="{{ $region }}" @if($structure->region == $region)  selected @endif>{{ $region }}</option>
                 @endforeach
             </select>
         </div>

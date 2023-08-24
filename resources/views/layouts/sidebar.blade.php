@@ -35,7 +35,7 @@
                 <div class="sb-sidenav-menu-heading">Procédures</div>
                 <a class="nav-link @if(request()->is('affectations*')) active @endif" href="{{ route('affectations.index') }}">
                     <div class="sb-nav-link-icon"></div>
-                    Affectations
+                    Afféctations
                 </a>
                 <a class="nav-link @if(request()->is('reparations*')) active @endif" href="{{ route('decharges_fournisseur.index') }}">
                     <div class="sb-nav-link-icon"></div>

@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 
 class StructureController extends Controller
 {
-    protected $wilayas;
+    protected $regions;
+    protected $sites;
 
     public function __construct() {
-        $this->wilayas = require(base_path('app/Helpers/Wilayas.php'));
+        $this->regions = require(base_path('app/Helpers/Regions.php'));
+        $this->sites = require(base_path('app/Helpers/Sites.php'));
     }
     /**
      * Display a listing of the resource.
@@ -32,7 +34,8 @@ class StructureController extends Controller
     {
 
         return view('structures.create', [
-            'wilayas' => $this->wilayas
+            'regions' => $this->regions,
+            'sites' => $this->sites
         ]);
     }
 
@@ -44,14 +47,14 @@ class StructureController extends Controller
         $request->validate([
             'designation' => 'required|max:40',
             'designation_site' =>'required|max:40',
-            'wilaya' => 'required'
+            'region' => 'required'
         ]);
 
         Structure::create([
             'num_structure' => Tools::generateModelNumber(Structure::class),
             'designation' => $request->designation,
             'designation_site' => $request->designation_site,
-            'wilaya' => $request->wilaya
+            'region' => $request->region
         ]);
 
         return redirect()->route('structures.index')->with('success', 'Structure creé avec succès');
@@ -72,7 +75,8 @@ class StructureController extends Controller
     {
         return view('structures.edit', [
             'structure' => Structure::find($num_structure),
-            'wilayas' => $this->wilayas
+            'regions' => $this->regions,
+            'sites' => $this->sites,
         ]);
     }
 
@@ -86,13 +90,13 @@ class StructureController extends Controller
         $request->validate([
             'designation' => 'required|max:40',
             'designation_site' =>'required|max:40',
-            'wilaya' => 'required'
+            'region' => 'required'
         ]);
 
         $structure->update([
             'designation' => $request->designation,
             'designation_site' => $request->designation_site,
-            'wilaya' => $request->wilaya
+            'region' => $request->region
         ]);
 
         return redirect()->route('structures.index')->with('success', 'Structure mis à jour avec succès');
@@ -103,7 +107,14 @@ class StructureController extends Controller
      */
     public function destroy($num_structure)
     {
-        Structure::find($num_structure)->delete();
+        $structure = Structure::find($num_structure);
+        if ($structure->employes->isNotEmpty()) {
+            alert()->error('Échec de la suppression de la structure !', 'La structure a été utilisée par des employés')->persistent();
+            return redirect()->back();
+        }
+
+        $structure->delete();
+
         return redirect()->route('structures.index')->with('success', 'Structure supprimé avec succès');
     }
 }
