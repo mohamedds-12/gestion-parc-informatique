@@ -37,7 +37,7 @@ class EmployeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'matricule' => 'required|integer',
+            'matricule' => 'required||digits:6|numeric',
             'nom' => 'required|max:20',
             'prenom' =>'required|max:20',
             'num_structure' => 'required',

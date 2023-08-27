@@ -73,7 +73,7 @@ class AgentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'matricule' => 'required|integer|unique:agent,matricule',
+            'matricule' => 'required|numeric|digits:6|unique:agent,matricule',
             'nom' => 'required|max:20',
             'prenom' =>'required|max:20',
             'email' =>'required|email|unique:agent,email',
