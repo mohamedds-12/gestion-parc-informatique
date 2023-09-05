@@ -11,7 +11,7 @@
         <div class="navbar">
             <img src="{{asset('images/logo.png')}}" class="logo">
             <ul>
-                <li> <a href="{{route('aboutUs')}}">About us</a></li>
+                <li> <a href="{{route('aboutUs')}}">A propos de nous</a></li>
 
                 <!-- <li> <a href="#">Fiche</a></li>
                 <li> <a href="#">Document</a></li>

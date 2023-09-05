@@ -47,7 +47,7 @@
                 <option value="" disabled> Choisir un matériel</option>
                 @foreach ($materiels as $materiel)
                     <option value="{{ $materiel->matricule }}"
-                        @if($materiel->matricule == $affectation->materiel->matricule)
+                        @if($materiel->matricule == $affectation->materiel?->matricule)
                         selected
                         @endif
                         >{{ $materiel->designation }}</option>

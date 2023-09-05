@@ -16,7 +16,7 @@
     </div>
 
     <div class="heading">
-        <h1>About us</h1>
+        <h1>A propos de nous</h1>
         <p>Société des Eaux et de
             l’Assainissement d’Alger</p>
     </div>

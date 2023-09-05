@@ -111,7 +111,7 @@ class AffectationController extends Controller
         $affectation = Affectation::find($code_affectation);
 
         // Update materiel status
-        $affectation->materiel->update([
+        $affectation->materiel?->update([
             'etat' => MaterielStatus::Non_Affecte
         ]);
 
