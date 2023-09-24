@@ -14,7 +14,7 @@
                     <div class="sb-nav-link-icon">
                         {{-- <i class="fas fa-users"></i> --}}
                     </div>
-                    Agents
+                    Intervenants
                 </a>
                 <a class="nav-link @if(request()->is('structures*')) active @endif" href="{{ route('structures.index') }}">
                     <div class="sb-nav-link-icon"></div>

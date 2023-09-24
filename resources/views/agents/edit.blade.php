@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-    Modifier un agent
+    Modifier un intervenant
 @endsection
 
 
 @section('content')
-    <h1 class="mb-3">Modifier un agent</h1>
+    <h1 class="mb-3">Modifier un intervenant</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">

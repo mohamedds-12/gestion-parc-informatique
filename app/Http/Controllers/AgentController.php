@@ -26,7 +26,7 @@ class AgentController extends Controller
 
         if (! Hash::check($request->password, $agent->password) ) {
             return redirect()->back()->withErrors([
-                'email' => "Aucun agent possédant ces informations d'identification n'a été trouvé."
+                'email' => "Aucun intervenant possédant ces informations d'identification n'a été trouvé."
             ]);
 
         } else {
@@ -53,7 +53,7 @@ class AgentController extends Controller
      */
     public function index()
     {
-        confirmDelete('Êtes-vous sûrs ?', 'Êtes-vous sûr de vouloir supprimer cet agent ?');
+        confirmDelete('Êtes-vous sûrs ?', 'Êtes-vous sûr de vouloir supprimer cet intervenant ?');
         return view('agents.index', [
             'agents' => Agent::all()
         ]);
@@ -88,7 +88,7 @@ class AgentController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('agents.index')->with('success', 'Agent creé avec succès');
+        return redirect()->route('agents.index')->with('success', 'Intervenant creé avec succès');
     }
 
     /**
@@ -131,7 +131,7 @@ class AgentController extends Controller
                         : $agent->password,
         ]);
 
-        return redirect()->route('agents.index')->with('success', 'Agent mis à jour avec succès');
+        return redirect()->route('agents.index')->with('success', 'Intervenant mis à jour avec succès');
     }
 
     /**
@@ -147,6 +147,6 @@ class AgentController extends Controller
 
         $agent->delete();
 
-        return redirect()->route('agents.index')->with('success', 'Agent supprimé avec succès');
+        return redirect()->route('agents.index')->with('success', 'Intervenant supprimé avec succès');
     }
 }

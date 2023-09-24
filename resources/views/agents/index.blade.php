@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-    Agents
+    Intervenants
 @endsection
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="">Agents</h1>
+        <h1 class="">Intervenants</h1>
 
         <a name="" id="" class="btn btn-primary" href="{{ route('agents.create') }}" role="button">
             <i class="fa-solid fa-circle-plus"></i> Ajouter
