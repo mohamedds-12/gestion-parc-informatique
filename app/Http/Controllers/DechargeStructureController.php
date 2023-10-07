@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\MaterielStatus;
 use App\Helpers\Tools;
-use App\Models\DechargeStructure;
 use App\Models\Employe;
 use App\Models\Materiel;
 use Illuminate\Http\Request;
+use App\Enums\MaterielStatus;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\DechargeStructure;
 
 class DechargeStructureController extends Controller
 {
@@ -138,5 +139,14 @@ class DechargeStructureController extends Controller
         $decharge_structure->delete();
 
         return redirect()->route('decharges_structure.index')->with('success', 'Réformation supprimé avec succès');
+    }
+
+    public function print($code_decharge)
+    {
+        $decharge_structure = DechargeStructure::find($code_decharge);
+
+        return Pdf::loadView('pdf-templates.decharge_structure', [
+            'decharge_structure' => $decharge_structure
+        ])->stream();
     }
 }

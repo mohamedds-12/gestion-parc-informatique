@@ -31,7 +31,7 @@
                     <td>
                         <div class="d-flex justify-content-between">
                             <a target="_blank" href="{{ route('affectations.print', $affectation->code_affectation) }}" class="btn btn-warning btn-sm">
-                                <i class="fa-solid fa-pen-to-square"></i> Imprimer
+                                <i class="fa-solid fa-print"></i> Imprimer
                             </a>
                             <a href="{{ route('affectations.edit', $affectation->code_affectation) }}" class="btn btn-info btn-sm">
                                 <i class="fa-solid fa-pen-to-square"></i> Modifier

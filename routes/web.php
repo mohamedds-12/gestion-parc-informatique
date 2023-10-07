@@ -101,6 +101,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/reformations/{code_decharge}/edit', [DechargeStructureController::class, 'edit'])->name('decharges_structure.edit');
     Route::patch('/reformations/{code_decharge}', [DechargeStructureController::class, 'update'])->name('decharges_structure.update');
     Route::delete('/reformations/{code_decharge}/delete', [DechargeStructureController::class, 'destroy'])->name('decharges_structure.destroy');
+    Route::get('/reformations/{code_decharge}/print', [DechargeStructureController::class, 'print'])->name('decharges_structure.print');
 
     // Bons entre
     Route::get('/bons-entre', [BonEntreController::class, 'index'])->name('bons_entre.index');

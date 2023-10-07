@@ -125,10 +125,8 @@ class AffectationController extends Controller
     {
         $affectation = Affectation::find($code_affectation);
 
-        return Pdf::loadView('fiche_affectation', [
+        return Pdf::loadView('pdf-templates.fiche_affectation', [
             'affectation' => $affectation
-        ])->setOption([
-            'isRemoteEnabled' => true
         ])->stream();
     }
 }

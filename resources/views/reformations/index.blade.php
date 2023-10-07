@@ -20,7 +20,7 @@
             <th>Structure</th>
             <th>Employé</th>
             <th>Date de décharge</th>
-            <th class="text-center" width="20%">Actions</th>
+            <th class="text-center" width="30%">Actions</th>
         </thead>
         <tbody>
             @foreach ($decharges_structure as $decharge_structure)
@@ -38,6 +38,9 @@
                     <td>{{ $decharge_structure->date_decharge }}</td>
                     <td>
                         <div class="d-flex justify-content-between">
+                            <a target="_blank" href="{{ route('decharges_structure.print', $decharge_structure->code_decharge) }}" class="btn btn-warning btn-sm">
+                                <i class="fa-solid fa-print"></i> Imprimer
+                            </a>
                             <a href="{{ route('decharges_structure.edit', $decharge_structure->code_decharge) }}" class="btn btn-info btn-sm">
                                 <i class="fa-solid fa-pen-to-square"></i> Modifier
                             </a>

@@ -9,7 +9,7 @@
                     </div>
                     Dashboard
                 </a>
-                <div class="sb-sidenav-menu-heading">Principales</div>
+                <div class="sb-sidenav-menu-heading">Initiales</div>
                 <a class="nav-link @if(request()->is('agents*')) active @endif" href="{{ route('agents.index') }}">
                     <div class="sb-nav-link-icon">
                         {{-- <i class="fas fa-users"></i> --}}
