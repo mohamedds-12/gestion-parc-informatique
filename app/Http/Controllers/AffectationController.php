@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\MaterielStatus;
 use App\Helpers\Tools;
-use App\Models\Affectation;
 use App\Models\Employe;
 use App\Models\Materiel;
+use App\Models\Affectation;
 use Illuminate\Http\Request;
+use App\Enums\MaterielStatus;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AffectationController extends Controller
 {
@@ -118,5 +119,16 @@ class AffectationController extends Controller
         $affectation->delete();
 
         return redirect()->route('affectations.index')->with('success', 'Affectation supprimé avec succès');
+    }
+
+    public function print($code_affectation)
+    {
+        $affectation = Affectation::find($code_affectation);
+
+        return Pdf::loadView('fiche_affectation', [
+            'affectation' => $affectation
+        ])->setOption([
+            'isRemoteEnabled' => true
+        ])->stream();
     }
 }

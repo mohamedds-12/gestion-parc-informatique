@@ -12,6 +12,7 @@ use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\MaterielController;
 use App\Http\Controllers\StructureController;
+use App\Models\Affectation;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -83,6 +84,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/affectations/{code_affectation}/edit', [AffectationController::class, 'edit'])->name('affectations.edit');
     Route::patch('/affectations/{code_affectation}', [AffectationController::class, 'update'])->name('affectations.update');
     Route::delete('/affectations/{code_affectation}/delete', [AffectationController::class, 'destroy'])->name('affectations.destroy');
+    Route::get('/affectations/{code_affectation}/print', [AffectationController::class, 'print'])->name('affectations.print');
 
     // Reparations (Decharges fournisseur)
     Route::get('/reparations', [DechargeFournisseurController::class, 'index'])->name('decharges_fournisseur.index');
@@ -124,4 +126,11 @@ Route::middleware('auth')->group(function() {
     Route::patch('/bons-transfere/{num_bs}', [BonTransfereController::class, 'update'])->name('bons_transfere.update');
     Route::delete('/bons-transfere/{num_bs}/delete', [BonTransfereController::class, 'destroy'])->name('bons_transfere.destroy');
 
+});
+
+
+Route::get('test', function () {
+    return view('fiche_affectation', [
+        'affectation' => Affectation::first()
+    ]);
 });

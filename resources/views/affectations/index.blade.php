@@ -19,7 +19,7 @@
             <th>Employé</th>
             <th>Matériel</th>
             <th>Date d'affectation</th>
-            <th class="text-center" width="20%">Actions</th>
+            <th class="text-center" width="30%">Actions</th>
         </thead>
         <tbody>
             @foreach ($affectations as $affectation)
@@ -30,6 +30,9 @@
                     <td>{{ $affectation->date_affectation }}</td>
                     <td>
                         <div class="d-flex justify-content-between">
+                            <a target="_blank" href="{{ route('affectations.print', $affectation->code_affectation) }}" class="btn btn-warning btn-sm">
+                                <i class="fa-solid fa-pen-to-square"></i> Imprimer
+                            </a>
                             <a href="{{ route('affectations.edit', $affectation->code_affectation) }}" class="btn btn-info btn-sm">
                                 <i class="fa-solid fa-pen-to-square"></i> Modifier
                             </a>
