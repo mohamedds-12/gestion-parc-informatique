@@ -21,29 +21,32 @@
             <th>Fournisseur</th>
             <th>Observation</th>
             <th>Date de décharge</th>
-            <th class="text-center" width="20%">Actions</th>
+            <th class="text-center" width="30%">Actions</th>
         </thead>
         <tbody>
-            @foreach ($decharges_fournisseur as $decharge_fournissuer)
+            @foreach ($decharges_fournisseur as $decharge_fournisseur)
                 <tr>
-                    <td>{{ $decharge_fournissuer->code_decharge }}</td>
+                    <td>{{ $decharge_fournisseur->code_decharge }}</td>
                     <td>
-                        @foreach ($decharge_fournissuer->materiels as $materiel)
+                        @foreach ($decharge_fournisseur->materiels as $materiel)
                             <div class="badge bg-secondary">
                                 {{ $materiel->designation }}
                             </div>
                         @endforeach
                     </td>
-                    <td>{{ $decharge_fournissuer->probleme }}</td>
-                    <td>{{ $decharge_fournissuer->fournisseur?->nom }}</td>
-                    <td>{{ $decharge_fournissuer->observation }}</td>
-                    <td>{{ $decharge_fournissuer->date_decharge }}</td>
+                    <td>{{ $decharge_fournisseur->probleme }}</td>
+                    <td>{{ $decharge_fournisseur->fournisseur?->nom }}</td>
+                    <td>{{ $decharge_fournisseur->observation }}</td>
+                    <td>{{ $decharge_fournisseur->date_decharge }}</td>
                     <td>
                         <div class="d-flex justify-content-between">
-                            <a href="{{ route('decharges_fournisseur.edit', $decharge_fournissuer->code_decharge) }}" class="btn btn-info btn-sm">
+                            <a target="_blank" href="{{ route('decharges_fournisseur.print', $decharge_fournisseur->code_decharge) }}" class="btn btn-warning btn-sm">
+                                <i class="fa-solid fa-print"></i> Imprimer
+                            </a>
+                            <a href="{{ route('decharges_fournisseur.edit', $decharge_fournisseur->code_decharge) }}" class="btn btn-info btn-sm">
                                 <i class="fa-solid fa-pen-to-square"></i> Modifier
                             </a>
-                            <a href="{{ route('decharges_fournisseur.destroy', $decharge_fournissuer->code_decharge) }}"
+                            <a href="{{ route('decharges_fournisseur.destroy', $decharge_fournisseur->code_decharge) }}"
                                 class="btn btn-danger btn-sm" data-confirm-delete="true">
                                 <i class="fa-solid fa-trash-can"></i> Supprimer
                             </a>

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\MaterielStatus;
 use App\Helpers\Tools;
-use App\Models\DechargeFournisseur;
-use App\Models\Fournisseur;
 use App\Models\Materiel;
+use App\Models\Fournisseur;
 use Illuminate\Http\Request;
+use App\Enums\MaterielStatus;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\DechargeFournisseur;
 
 class DechargeFournisseurController extends Controller
 {
@@ -142,5 +143,14 @@ class DechargeFournisseurController extends Controller
         $decharge_fournisseur->delete();
 
         return redirect()->route('decharges_fournisseur.index')->with('success', 'Réparation supprimé avec succès');
+    }
+
+    public function print($code_decharge)
+    {
+        $decharge_fournisseur = DechargeFournisseur::find($code_decharge);
+
+        return Pdf::loadView('pdf-templates.decharge_fournisseur', [
+            'decharge_fournisseur' => $decharge_fournisseur
+        ])->stream();
     }
 }

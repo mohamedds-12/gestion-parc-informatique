@@ -93,6 +93,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/reparations/{code_decharge}/edit', [DechargeFournisseurController::class, 'edit'])->name('decharges_fournisseur.edit');
     Route::patch('/reparations/{code_decharge}', [DechargeFournisseurController::class, 'update'])->name('decharges_fournisseur.update');
     Route::delete('/reparations/{code_decharge}/delete', [DechargeFournisseurController::class, 'destroy'])->name('decharges_fournisseur.destroy');
+    Route::get('/reparations/{code_decharge}/print', [DechargeFournisseurController::class, 'print'])->name('decharges_fournisseur.print');
 
     // Reformations (Decharges structure)
     Route::get('/reformations', [DechargeStructureController::class, 'index'])->name('decharges_structure.index');
