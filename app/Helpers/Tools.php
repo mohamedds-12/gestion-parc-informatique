@@ -22,10 +22,16 @@ class Tools
     public static function generateAffectationCode(): string
     {
         $lastAffectation = Affectation::latest()->first();
-        $affectationCodeInt = (int)explode('-', $lastAffectation->code_affectation)[1];
+        if ($lastAffectation == null) {
+            $codeInteagerPart = '001';
+        } else {
+            $affectationCodeInt = (int)explode('-', $lastAffectation->code_affectation)[1];
+            $codeInteagerPart = str_pad($affectationCodeInt+1, 3, '0', STR_PAD_LEFT);
+        }
+
 
         $codeAffectation = 'AF' . '-' .
-            str_pad($affectationCodeInt+1, 3, '0', STR_PAD_LEFT) . '-' .
+            $codeInteagerPart . '-' .
             now()->month . substr(now()->year, 2, 2);
 
         return $codeAffectation;
@@ -34,10 +40,16 @@ class Tools
     public static function generateReparationCode(): string
     {
         $lastReparation = DechargeFournisseur::latest()->first();
-        $reparationCodeInt = (int)explode('-', $lastReparation->code_decharge)[1];
+        if ($lastReparation == null) {
+            $codeInteagerPart = '001';
+        } else {
+            $reparationCodeInt = (int)explode('-', $lastReparation->code_decharge)[1];
+            $codeInteagerPart = str_pad($reparationCodeInt+1, 3, '0', STR_PAD_LEFT);
+        }
+
 
         $codeReparation = 'RP' . '-' .
-            str_pad($reparationCodeInt+1, 3, '0', STR_PAD_LEFT) . '-' .
+            $codeInteagerPart . '-' .
             now()->month . substr(now()->year, 2, 2);
 
         return $codeReparation;
@@ -46,10 +58,15 @@ class Tools
     public static function generateReformationCode(): string
     {
         $lastReformation = DechargeStructure::latest()->first();
-        $reformationCodeInt = (int)explode('-', $lastReformation->code_decharge)[1];
+        if ($lastReformation == null) {
+            $codeInteagerPart = '001';
+        } else {
+            $reformationCodeInt = (int)explode('-', $lastReformation->code_decharge)[1];
+            $codeInteagerPart = str_pad($reformationCodeInt+1, 3, '0', STR_PAD_LEFT);
+        }
 
         $codeReformation = 'RP' . '-' .
-            str_pad($reformationCodeInt+1, 3, '0', STR_PAD_LEFT) . '-' .
+            $codeInteagerPart . '-' .
             now()->month . substr(now()->year, 2, 2);
 
         return $codeReformation;
