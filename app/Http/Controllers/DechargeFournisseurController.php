@@ -46,11 +46,12 @@ class DechargeFournisseurController extends Controller
         ]);
 
         $decharge_fournisseur = DechargeFournisseur::create([
-            'code_decharge' => Tools::generateReparationCode(Materiel::find($request->materiels[0])),
+            'code_decharge' => Tools::generateReparationCode(),
             'probleme' => $request->probleme,
             'observation' => $request->observation,
             'date_decharge' => now(),
-            'num_fournisseur' => $request->fournisseur
+            'num_fournisseur' => $request->fournisseur,
+            'created_at' => now()
         ]);
 
         $decharge_fournisseur->materiels()->attach($request->materiels);

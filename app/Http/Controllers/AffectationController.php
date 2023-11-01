@@ -49,10 +49,11 @@ class AffectationController extends Controller
         }
 
         Affectation::create([
-            'code_affectation' => Tools::generateAffectationCode(Materiel::find($request->materiel)),
+            'code_affectation' => Tools::generateAffectationCode(),
             'matricule_employe' => $request->employe,
             'matricule_materiel' => $request->materiel,
-            'date_affectation' => now()
+            'date_affectation' => now(),
+            'created_at' => now()
         ]);
 
         // Update materiel status

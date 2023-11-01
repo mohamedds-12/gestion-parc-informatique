@@ -3,6 +3,8 @@
 namespace App\Helpers;
 
 use App\Models\Affectation;
+use App\Models\DechargeFournisseur;
+use App\Models\DechargeStructure;
 
 class Tools
 {
@@ -17,21 +19,39 @@ class Tools
         return $modelNumber;
     }
 
-    public static function generateAffectationCode($materiel): string
+    public static function generateAffectationCode(): string
     {
-        $codeAffectation = 'AF' . '-' . substr($materiel->matricule, 0, 3) . '-' . now()->year;
+        $lastAffectation = Affectation::latest()->first();
+        $affectationCodeInt = (int)explode('-', $lastAffectation->code_affectation)[1];
+
+        $codeAffectation = 'AF' . '-' .
+            str_pad($affectationCodeInt+1, 3, '0', STR_PAD_LEFT) . '-' .
+            now()->month . substr(now()->year, 2, 2);
+
         return $codeAffectation;
     }
 
-    public static function generateReparationCode($materiel): string
+    public static function generateReparationCode(): string
     {
-        $codeAffectation = 'RP' . '-' . substr($materiel->matricule, 0, 3) . '-' . now()->year;
-        return $codeAffectation;
+        $lastReparation = DechargeFournisseur::latest()->first();
+        $reparationCodeInt = (int)explode('-', $lastReparation->code_decharge)[1];
+
+        $codeReparation = 'RP' . '-' .
+            str_pad($reparationCodeInt+1, 3, '0', STR_PAD_LEFT) . '-' .
+            now()->month . substr(now()->year, 2, 2);
+
+        return $codeReparation;
     }
 
-    public static function generateReformationCode($materiel): string
+    public static function generateReformationCode(): string
     {
-        $codeAffectation = 'RF' . '-' . substr($materiel->matricule, 0, 3) . '-' . now()->year;
-        return $codeAffectation;
+        $lastReformation = DechargeStructure::latest()->first();
+        $reformationCodeInt = (int)explode('-', $lastReformation->code_decharge)[1];
+
+        $codeReformation = 'RP' . '-' .
+            str_pad($reformationCodeInt+1, 3, '0', STR_PAD_LEFT) . '-' .
+            now()->month . substr(now()->year, 2, 2);
+
+        return $codeReformation;
     }
 }

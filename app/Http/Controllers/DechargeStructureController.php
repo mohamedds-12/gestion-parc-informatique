@@ -45,9 +45,10 @@ class DechargeStructureController extends Controller
         ]);
 
         $decharge_structure = DechargeStructure::create([
-            'code_decharge' => Tools::generateReformationCode(Materiel::find($request->materiels[0])),
+            'code_decharge' => Tools::generateReformationCode(),
             'matricule_employe' => $request->employe,
             'date_decharge' => now(),
+            'created_at' => now()
         ]);
 
 

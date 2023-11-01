@@ -13,6 +13,8 @@ class Affectation extends BaseModel
     protected $primaryKey = "code_affectation";
     protected $guarded = [];
 
+
+
     /**
      * Get the employe that owns the Affectation
      *

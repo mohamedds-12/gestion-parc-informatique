@@ -94,6 +94,19 @@
                 </tbody>
 
             </table>
+            <br>
+
+            @if ($decharge_fournisseur->probleme)
+                <b>Le probléme : </b>
+                <span>{{ $decharge_fournisseur->probleme }}</span>
+                <br>
+            @endif
+
+            @if ($decharge_fournisseur->observation)
+                <b>L'observation : </b>
+                <span>{{ $decharge_fournisseur->observation }}</span>
+            @endif
+
         </div>
 
         <div style="position: relative; margin-top: 60px">
