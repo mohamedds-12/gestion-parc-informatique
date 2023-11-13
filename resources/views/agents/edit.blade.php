@@ -40,12 +40,12 @@
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Mot de passe</label>
-            <input type="text" class="form-control" id="password" required name="password" value="">
+            <input type="text" class="form-control" id="password" name="password" value="">
             <div class="form-text">Optional</div>
         </div>
         <div class="mb-3">
             <label for="password_confirm" class="form-label">Confirmer mot de passe</label>
-            <input type="text" class="form-control" id="password_confirm" required name="password_confirmation" value="">
+            <input type="text" class="form-control" id="password_confirm" name="password_confirmation" value="">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

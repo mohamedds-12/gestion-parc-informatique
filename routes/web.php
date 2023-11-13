@@ -38,12 +38,15 @@ Route::middleware('auth')->group(function() {
     Route::post('/logout', [AgentController::class, 'logout'])->name('logout');
 
     // Agents
-    Route::get('/agents', [AgentController::class, 'index'])->name('agents.index');
-    Route::get('/agents/create', [AgentController::class, 'create'])->name('agents.create');
-    Route::post('/agents', [AgentController::class, 'store'])->name('agents.store');
-    Route::get('/agents/{matricule}/edit', [AgentController::class, 'edit'])->name('agents.edit');
-    Route::patch('/agents/{matricule}', [AgentController::class, 'update'])->name('agents.update');
-    Route::delete('/agents/{matricule}/delete', [AgentController::class, 'destroy'])->name('agents.destroy');
+    Route::middleware('can:manage-agents')->group(function() {
+
+        Route::get('/agents', [AgentController::class, 'index'])->name('agents.index');
+        Route::get('/agents/create', [AgentController::class, 'create'])->name('agents.create');
+        Route::post('/agents', [AgentController::class, 'store'])->name('agents.store');
+        Route::get('/agents/{matricule}/edit', [AgentController::class, 'edit'])->name('agents.edit');
+        Route::patch('/agents/{matricule}', [AgentController::class, 'update'])->name('agents.update');
+        Route::delete('/agents/{matricule}/delete', [AgentController::class, 'destroy'])->name('agents.destroy');
+    });
 
     // Employees
     Route::get('/employees', [EmployeController::class, 'index'])->name('employees.index');

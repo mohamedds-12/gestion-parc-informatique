@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Agent;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,6 +26,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('manage-agents', function(Agent $agent) {
+            return $agent->is_admin;
+        });
     }
 }

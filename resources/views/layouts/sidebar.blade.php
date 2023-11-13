@@ -10,12 +10,14 @@
                     Dashboard
                 </a>
                 <div class="sb-sidenav-menu-heading">Initiales</div>
-                <a class="nav-link @if(request()->is('agents*')) active @endif" href="{{ route('agents.index') }}">
-                    <div class="sb-nav-link-icon">
-                        {{-- <i class="fas fa-users"></i> --}}
-                    </div>
-                    Intervenants
-                </a>
+                @can ('manage-agents')
+                    <a class="nav-link @if(request()->is('agents*')) active @endif" href="{{ route('agents.index') }}">
+                        <div class="sb-nav-link-icon">
+                            {{-- <i class="fas fa-users"></i> --}}
+                        </div>
+                        Intervenants
+                    </a>
+                @endcan
                 <a class="nav-link @if(request()->is('structures*')) active @endif" href="{{ route('structures.index') }}">
                     <div class="sb-nav-link-icon"></div>
                     Structures
